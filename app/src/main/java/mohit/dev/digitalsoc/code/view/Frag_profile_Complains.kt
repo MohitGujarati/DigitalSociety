@@ -1,7 +1,6 @@
 package mohit.dev.digitalsoc.code.view
 
 import android.os.Bundle
-import android.speech.tts.TextToSpeech
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import mohit.dev.digitalsoc.R
 import mohit.dev.digitalsoc.code.Adapter.Adapter_complain
+import mohit.dev.digitalsoc.code.Adapter.Adapter_profileComplain
 import mohit.dev.digitalsoc.code.Apiinterface.Api_interface
 import mohit.dev.digitalsoc.code.Model.Model_usercomplain
 import retrofit2.Call
@@ -54,6 +54,7 @@ class Frag_profile_Complains : Fragment() {
             .create(Api_interface::class.java)
 
 
+
         var result = retrofit.subject()
         var complaindataitem: ArrayList<Model_usercomplain> = ArrayList()
 
@@ -68,14 +69,33 @@ class Frag_profile_Complains : Fragment() {
                 complaindataitem =
                     response.body() as ArrayList<Model_usercomplain> /* = java.util.ArrayList<mohit.dev.digitalsoc.code.Model.model_complains> */
 
-                var adapter = Adapter_complain(
+                var adapter = Adapter_profileComplain(
                    view.context,
                     complaindataitem,
-                    object : Adapter_complain.SpeakerClicked {
+                    object : Adapter_profileComplain.btnclicked{
                         override fun onSpeakerClicked(position: Int, complains: String) {
 
-                            Toast.makeText(context, "removed", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Speaker", Toast.LENGTH_SHORT).show()
+                        }
 
+                        override fun onEditClicked(
+                            position: Int,
+                            id: Int,
+                            complains: String,
+                            name: String,
+                            flatno: String
+                        ) {
+                            Toast.makeText(context, "Edit $id", Toast.LENGTH_SHORT).show()
+                        }
+
+                        override fun onDeleteClicked(
+                            position: Int,
+                            id: Int,
+                            complains: String,
+                            name: String,
+                            flatno: String
+                        ) {
+                            Toast.makeText(context, "Delete $id", Toast.LENGTH_SHORT).show()
                         }
 
                     }

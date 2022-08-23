@@ -35,6 +35,7 @@ class Adapter_complain(
         holder.flatno.text = mymodel.flatno.toString()
         holder.complain.text = mymodel.complains.toString()
 
+
         holder.iv_speaker.setOnClickListener {
             speakerclicked.onSpeakerClicked(position,mymodel.complains)
         }

@@ -39,6 +39,13 @@ interface Api_interface {
     ): Call<List<Model_usercomplain>>
 
 
+    @FormUrlEncoded
+    @POST("delete_complain.php")
+    fun delete_complain(
+        @Field("id") id:Int
+    ):Call<List<Model_usercomplain>>
+
+
     @GET("get_notice.php")
     fun get_notice():Call<List<Model_noticedb>>
 
@@ -50,6 +57,7 @@ interface Api_interface {
         @Field("notice") notice: String,
         @Field("date") date: String
     ): Call<List<Model_noticedb>>
+
 
 
 
