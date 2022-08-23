@@ -7,6 +7,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".code.view.Activity_BaseActivity">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="visible"
+    android:id="@+id/cardlayout"
+    android:orientation="vertical">
+
 
     <LinearLayout
         android:id="@+id/container"
@@ -60,21 +67,24 @@
         android:textStyle="bold"
         app:icon="@drawable/ic_add"
         app:iconTint="@color/white" />
+</LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="gone">
+        >
 
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/mytablayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabSelectedTextColor="@color/teal_200"
-            app:tabTextColor="#000">
+            android:background="@drawable/background_viewlayouts"
+            app:tabSelectedTextColor="#5E35B1"
+            app:tabTextAppearance="@style/TextAppearance.AppCompat.Body2">
 
         </com.google.android.material.tabs.TabLayout>
 

@@ -10,6 +10,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
@@ -35,6 +38,7 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     var mytablayout: TabLayout? = null
     var myviewpager: ViewPager? = null
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
@@ -48,7 +52,8 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         mytablayout = findViewById(R.id.mytablayout)
         myviewpager = findViewById(R.id.myviewpager)
 
-        var tab_layout=findViewById<LinearLayout>(R.id.tab_layout)
+        var tab_layout = findViewById<LinearLayout>(R.id.tab_layout)
+        var cardlayout = findViewById<LinearLayout>(R.id.cardlayout)
 
 
         tts = TextToSpeech(this, this)
@@ -74,15 +79,18 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         when (id) {
 
 
-            0->{
-                profile_Act(rec_complains,
+            0 -> {
+                profile_Act(
+                    rec_complains,
                     title,
                     btn_default,
                     comp_flatno,
                     comp_username,
                     comp_position,
                     position.toString(),
-                tab_layout)
+                    tab_layout,
+                    cardlayout
+                )
             }
 
             1 -> {
@@ -120,27 +128,37 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         compUsername: String,
         compPosition: String,
         toString: String,
-        tab_layout: LinearLayout
+        tab_layout: LinearLayout,
+        cardlayout: LinearLayout
     ) {
 
-        title.visibility=View.GONE
-        recComplains.visibility=View.GONE
-        btnDefault.visibility=View.GONE
-        
-        tab_layout.visibility=View.VISIBLE
-        
-        if (tab_layout.isVisible){
-            Toast.makeText(this, "tab visisble", Toast.LENGTH_SHORT).show()
+        cardlayout.visibility = View.GONE
+
+        if (tab_layout.isVisible) {
+            Toast.makeText(this, "visible", Toast.LENGTH_SHORT).show()
+            load_viewpager()
         }
-
-        load_viewpager()
-
 
 
     }
 
     private fun load_viewpager() {
 
+        mytablayout!!.tabGravity = TabLayout.GRAVITY_FILL
+
+        setViewPager(myviewpager!!)
+        mytablayout!!.setupWithViewPager(myviewpager)
+
+
+    }
+
+    fun setViewPager(viewPager: ViewPager) {
+        var adapter: ViewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
+
+        adapter.addFragment(Frag_profile_Complains(), "Complains")
+        adapter.addFragment(Frag_profile_Notice(), "Notice")
+
+        viewPager.adapter = adapter
     }
 
 
@@ -154,7 +172,6 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         comp_position: String,
         position: String
     ) {
-
 
 
         Toast.makeText(this, "load notice", Toast.LENGTH_SHORT).show()
@@ -407,4 +424,30 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
     }
 
+
+    class ViewPagerAdapter : FragmentPagerAdapter {
+        var fragmentList: ArrayList<Fragment> = ArrayList()
+        var fragmentTitleList: ArrayList<String> = ArrayList()
+
+        constructor(supportFragmentManager: FragmentManager) : super(supportFragmentManager)
+
+        override fun getCount(): Int {
+            return fragmentList.size
+        }
+
+        override fun getItem(position: Int): Fragment {
+            return fragmentList.get(position)
+        }
+
+        override fun getPageTitle(position: Int): String {
+            return fragmentTitleList.get(position)
+        }
+
+        fun addFragment(fragment: Fragment, title: String) {
+            fragmentList.add(fragment)
+            fragmentTitleList.add(title)
+        }
+
+
+    }
 }
