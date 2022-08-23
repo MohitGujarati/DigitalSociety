@@ -14,6 +14,7 @@ import mohit.dev.digitalsoc.code.Adapter.Adapter_complain
 import mohit.dev.digitalsoc.code.Adapter.Adapter_profileComplain
 import mohit.dev.digitalsoc.code.Apiinterface.Api_interface
 import mohit.dev.digitalsoc.code.Model.Model_usercomplain
+import mohit.dev.digitalsoc.code.Model.Model_userdb
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -74,7 +75,6 @@ class Frag_profile_Complains : Fragment() {
                     complaindataitem,
                     object : Adapter_profileComplain.btnclicked{
                         override fun onSpeakerClicked(position: Int, complains: String) {
-
                             Toast.makeText(context, "Speaker", Toast.LENGTH_SHORT).show()
                         }
 
@@ -96,6 +96,35 @@ class Frag_profile_Complains : Fragment() {
                             flatno: String
                         ) {
                             Toast.makeText(context, "Delete $id", Toast.LENGTH_SHORT).show()
+
+                            var retrofit = Retrofit.Builder().baseUrl("https://mohitgapp.000webhostapp.com/")
+                                .addConverterFactory(GsonConverterFactory.create())
+                                .build()
+                                .create(Api_interface::class.java)
+
+
+
+                            var result = retrofit.delete_complain(
+                               id
+                            )
+
+                            result.enqueue(object : Callback<List<Model_usercomplain>?> {
+                                override fun onResponse(
+                                    call: Call<List<Model_usercomplain>?>,
+                                    response: Response<List<Model_usercomplain>?>
+                                )
+                                {
+                                    Toast.makeText(context, "Data at $id deleted successfully", Toast.LENGTH_SHORT).show()
+                                }
+
+                                override fun onFailure(
+                                    call: Call<List<Model_usercomplain>?>,
+                                    t: Throwable
+                                ) {
+                                    //nothing to do
+                                }
+
+                            })
                         }
 
                     }
