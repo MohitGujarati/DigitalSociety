@@ -309,15 +309,11 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                             tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
                             tts!!.setPitch(1.0f)
                             tts!!.setSpeechRate(1.4f)
-
-
                         }
 
                     }
                 )
                 recComplain.adapter = adapter
-
-
             }
 
 
