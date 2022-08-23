@@ -55,6 +55,8 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         var tab_layout = findViewById<LinearLayout>(R.id.tab_layout)
         var cardlayout = findViewById<LinearLayout>(R.id.cardlayout)
 
+        var layout_profile = findViewById<LinearLayout>(R.id.layout_profile)
+
 
         tts = TextToSpeech(this, this)
 
@@ -89,7 +91,8 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                     comp_position,
                     position.toString(),
                     tab_layout,
-                    cardlayout
+                    cardlayout,
+                    layout_profile
                 )
             }
 
@@ -124,15 +127,33 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         recComplains: RecyclerView,
         title: TextView,
         btnDefault: ExtendedFloatingActionButton,
-        compFlatno: String,
-        compUsername: String,
-        compPosition: String,
-        toString: String,
+        comp_flatno: String,
+        comp_username: String,
+        comp_position: String,
+        position: String,
         tab_layout: LinearLayout,
-        cardlayout: LinearLayout
+        cardlayout: LinearLayout,
+        layout_profile: LinearLayout
     ) {
 
         cardlayout.visibility = View.GONE
+
+        var Bundle = Bundle()
+        var fragmentManager = supportFragmentManager
+        var fragmentTransaction = fragmentManager.beginTransaction()
+        var fragment = Frag_Profile_card()
+
+        Bundle.putString("compuser", "${comp_username}")
+        Bundle.putString("compflatno", "${comp_flatno}")
+        Bundle.putString("compposition", "${position}")
+
+        fragment.arguments = Bundle
+
+        fragmentTransaction.add(R.id.layout_profile, fragment).commit()
+
+
+
+
 
         if (tab_layout.isVisible) {
             Toast.makeText(this, "visible", Toast.LENGTH_SHORT).show()

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".code.view.Frag_Profile_card">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:elevation="50dp"
+        android:background="@drawable/background_profile"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:text="Your Profile"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                android:textStyle="bold"
+
+                />
+
+        </LinearLayout>
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="65dp"
+            android:gravity="start">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/profile_pic"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="10dp"
+                android:background="@drawable/background_viewlayouts"
+                android:backgroundTint="#039BE5"
+                app:cardCornerRadius="80dp">
+
+
+                <ImageView
+                    android:id="@+id/imageview"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_gravity="center"
+                    android:clipToOutline="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/user_img" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/profile_ownersname"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="23dp"
+                android:layout_marginBottom="3dp"
+                android:layout_toRightOf="@+id/profile_pic"
+                android:text="Chairman"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/profile_flatno"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profile_ownersname"
+                android:layout_toRightOf="@+id/profile_pic"
+                android:gravity="center"
+                android:text="A-111"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/profile_tvposition"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profile_ownersname"
+                android:layout_marginLeft="9dp"
+                android:layout_toRightOf="@+id/profile_flatno"
+                android:gravity="center"
+                android:text="Position:"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/profile_users_position"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profile_ownersname"
+                android:layout_marginLeft="9dp"
+                android:layout_toRightOf="@+id/profile_tvposition"
+                android:gravity="center"
+                android:text="Chairman"
+                android:textColor="@color/white" />
+
+
+        </RelativeLayout>
+
+
+
+
+    </RelativeLayout>
+
+</FrameLayout>
