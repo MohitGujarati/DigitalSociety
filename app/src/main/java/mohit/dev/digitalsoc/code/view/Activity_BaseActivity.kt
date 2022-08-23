@@ -62,6 +62,17 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         when (id) {
 
+
+            0->{
+                profile_Act(rec_complains,
+                    title,
+                    btn_default,
+                    comp_flatno,
+                    comp_username,
+                    comp_position,
+                    position.toString())
+            }
+
             1 -> {
                 load_notice(
 
@@ -85,6 +96,25 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 comp_position
             )
         }
+
+
+    }
+
+    private fun profile_Act(
+        recComplains: RecyclerView,
+        title: TextView,
+        btnDefault: ExtendedFloatingActionButton,
+        compFlatno: String,
+        compUsername: String,
+        compPosition: String,
+        toString: String
+    ) {
+
+        title.visibility=View.GONE
+        recComplains.visibility=View.GONE
+        btnDefault.visibility=View.GONE
+
+
 
 
     }

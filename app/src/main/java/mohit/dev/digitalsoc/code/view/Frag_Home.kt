@@ -38,9 +38,7 @@ class Frag_Home : Fragment() {
         var user_profile=view.findViewById<ImageView>(R.id.user_profile)
 
 
-        user_profile.setOnClickListener {
-            Toast.makeText(context, "working", Toast.LENGTH_SHORT).show()
-        }
+
 
 
 
@@ -54,7 +52,13 @@ class Frag_Home : Fragment() {
         flat_no.text=flatno.toString()
         users_position.text=userposition.toString()
 
-
+        user_profile.setOnClickListener {
+            val i =Intent(context,Activity_BaseActivity::class.java)
+            i.putExtra("id", 0)
+            i.putExtra("username","${username.toString()}")
+            i.putExtra("flatno","${flatno.toString()}")
+            startActivity(i)
+        }
 
 
 
