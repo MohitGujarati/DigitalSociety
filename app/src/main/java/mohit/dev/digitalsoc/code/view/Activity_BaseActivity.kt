@@ -25,7 +25,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
-class BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
+class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     var tts: TextToSpeech? = null
     val BASE_URL = "https://mohitgapp.000webhostapp.com/"
 
@@ -345,7 +345,7 @@ class BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     override fun onBackPressed() {
         super.onBackPressed()
         fun goback(comp_username: String, comp_flatno: String, comp_position: String) {
-            var i = Intent(this, MainActivity::class.java)
+            var i = Intent(this, Activity_MainActivity::class.java)
             i.putExtra("base_username", "${comp_username}")
             i.putExtra("base_flatno", "${comp_flatno}")
             i.putExtra("base_position", "${comp_position}")

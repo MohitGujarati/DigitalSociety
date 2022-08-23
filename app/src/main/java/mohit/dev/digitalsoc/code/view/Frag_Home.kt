@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -33,6 +34,13 @@ class Frag_Home : Fragment() {
         var users_position = view.findViewById<TextView>(R.id.users_position)
 
         var profile_card = view.findViewById<LinearLayout>(R.id.profile_card)
+
+        var user_profile=view.findViewById<ImageView>(R.id.user_profile)
+
+
+        user_profile.setOnClickListener {
+            Toast.makeText(context, "working", Toast.LENGTH_SHORT).show()
+        }
 
 
 
@@ -149,7 +157,7 @@ class Frag_Home : Fragment() {
     }
 
     private fun fun_notice(username: String?, flatno: String?, userposition: String?) {
-        var i = Intent(context, BaseActivity::class.java)
+        var i = Intent(context, Activity_BaseActivity::class.java)
         i.putExtra("id", 1)
         i.putExtra("username","${username.toString()}")
         i.putExtra("flatno","${flatno.toString()}")
@@ -162,7 +170,7 @@ class Frag_Home : Fragment() {
     }
 
     private fun fun_complains(username: String?, flatno: String?, userposition: String?) {
-        var i = Intent(context, BaseActivity::class.java)
+        var i = Intent(context, Activity_BaseActivity::class.java)
         i.putExtra("id", 2)
         i.putExtra("username","${username.toString()}")
         i.putExtra("flatno","${flatno.toString()}")

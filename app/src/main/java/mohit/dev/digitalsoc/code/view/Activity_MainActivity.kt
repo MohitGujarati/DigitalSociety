@@ -7,7 +7,7 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import mohit.dev.digitalsoc.R
 
-class MainActivity : AppCompatActivity() {
+class Activity_MainActivity : AppCompatActivity() {
 
     var user_name: String = ""
     var user_flatno: String = ""
@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         /*
         https://mohitgapp.000webhostapp.com/
          */
+
+
         var containerview = findViewById<LinearLayout>(R.id.containerview)
 
         val extras = intent.extras

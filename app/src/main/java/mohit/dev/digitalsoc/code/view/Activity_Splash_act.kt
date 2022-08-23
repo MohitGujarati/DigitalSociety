@@ -8,21 +8,19 @@ import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.EditText
-import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.Toast
 import com.google.android.material.button.MaterialButton
 import mohit.dev.digitalsoc.R
 import mohit.dev.digitalsoc.code.Apiinterface.Api_interface
 import mohit.dev.digitalsoc.code.Model.Model_userdb
-import mohit.dev.digitalsoc.code.view.MainActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class Splash_act : AppCompatActivity() {
+class Activity_Splash_act : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
@@ -79,8 +77,8 @@ class Splash_act : AppCompatActivity() {
                         user_flatno = "${data.flatno}"
                         user_position = "${data.position}"
 
-                        val i=Intent(this@Splash_act,MainActivity::class.java)
-                        Toast.makeText(this@Splash_act, "From splash screen", Toast.LENGTH_SHORT).show()
+                        val i=Intent(this@Activity_Splash_act,Activity_MainActivity::class.java)
+                        Toast.makeText(this@Activity_Splash_act, "From splash screen", Toast.LENGTH_SHORT).show()
                         i.putExtra("splash_username","$user_name")
                         i.putExtra("splash_flatno","$user_flatno")
                         i.putExtra("splash_position","$user_position")

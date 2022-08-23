@@ -16,7 +16,7 @@
         android:theme="@style/Theme.Digitalsoc"
         tools:targetApi="31">
         <activity
-            android:name=".code.view.BaseActivity"
+            android:name=".code.view.Activity_BaseActivity"
             android:exported="true" >
 
         </activity>
@@ -24,7 +24,7 @@
             android:name=".code.view.Activity_Add_user"
             android:exported="false" />
         <activity
-            android:name=".code.view.Splash_act"
+            android:name=".code.view.Activity_Splash_act"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,7 +33,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".code.view.MainActivity"
+            android:name=".code.view.Activity_MainActivity"
             android:exported="true" >
 
         </activity>
