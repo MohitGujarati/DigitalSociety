@@ -1,6 +1,7 @@
 package mohit.dev.digitalsoc.code.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,6 +36,7 @@ class Frag_Add_complain : Fragment() {
         val username = bundle!!.getString("compuser")
         val flatno = bundle!!.getString("compflatno")
         val position = bundle!!.getString("compposition")
+        val email = bundle!!.getString("compemail")
 
 
         tv_flatno.text=flatno.toString()
@@ -51,7 +53,7 @@ class Frag_Add_complain : Fragment() {
             var get_name=tv_name.text.toString()
             var get_flatno=tv_flatno.text.toString()
             var get_complains=ed_complains.text.toString()
-            var get_email="email"
+            var get_email="${email.toString()}"
 
             var result = retrofit.complain(
 
@@ -61,6 +63,7 @@ class Frag_Add_complain : Fragment() {
                 "$get_complains"
             )
 
+            Log.d("recived_data_addfragment","${get_name} email:${get_email} position:not needed, flatno:${get_flatno}")
 
             result.enqueue(object : Callback<List<Model_usercomplain>?> {
                 override fun onResponse(

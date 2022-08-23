@@ -1,6 +1,7 @@
 package mohit.dev.digitalsoc.code.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -25,13 +26,17 @@ class Frag_Profile_card : Fragment() {
         var tvprofile_user_position=view.findViewById<TextView>(R.id.profile_users_position)
 
         val bundle = arguments
-        val username = bundle!!.getString("compuser")
-        val flatno = bundle.getString("compflatno")
-        val position = bundle.getString("compposition")
+        val username = bundle!!.getString("baseact_pro_username")
+        val flatno = bundle.getString("baseact_pro_flatno")
+        val position = bundle.getString("baseact_pro_position")
+        val email = bundle.getString("baseact_pro_email")
 
         tvusername.text=username.toString()
         tvprofile_flatno.text=flatno.toString()
         tvprofile_user_position.text=position.toString()
+
+        Log.d("recived_data_Profilecard","${username} email:${email} position:${position}, flatno:${flatno}")
+
 
         return view
     }

@@ -2,6 +2,7 @@ package mohit.dev.digitalsoc.code.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,6 +39,7 @@ class Frag_Home : Fragment() {
         var user_profile=view.findViewById<ImageView>(R.id.user_profile)
 
 
+        var user_email=""
 
 
 
@@ -47,16 +49,27 @@ class Frag_Home : Fragment() {
         val username = bundle!!.getString("username")
         val flatno = bundle!!.getString("flatno")
         val userposition = bundle!!.getString("userposition")
+        val useremail = bundle!!.getString("useremail")
 
         tv_owners_name.text=username.toString()
         flat_no.text=flatno.toString()
         users_position.text=userposition.toString()
+        user_email=useremail.toString()
 
         user_profile.setOnClickListener {
             val i =Intent(context,Activity_BaseActivity::class.java)
             i.putExtra("id", 0)
             i.putExtra("username","${username.toString()}")
             i.putExtra("flatno","${flatno.toString()}")
+            i.putExtra("email","${useremail.toString()}")
+            i.putExtra("position","${userposition.toString()}")
+
+
+            Log.d("passing_data_base","${username} email:${useremail} position:${userposition} flatno:${flatno}")
+
+
+
+
             startActivity(i)
         }
 
@@ -65,7 +78,7 @@ class Frag_Home : Fragment() {
 
 
 
-        set_recview(recview, view, tv_owners_name, flat_no, profile_card,username,flatno,userposition)
+        set_recview(recview, view, tv_owners_name, flat_no, profile_card,username,flatno,userposition,user_email)
         return view
     }
 
@@ -78,7 +91,8 @@ class Frag_Home : Fragment() {
         profile_card: LinearLayout,
         username: String?,
         flatno: String?,
-        userposition: String?
+        userposition: String?,
+        user_email: String
 
 
     ) {
@@ -148,9 +162,9 @@ class Frag_Home : Fragment() {
                 override fun onCardClicked(position: Int) {
                     when (position) {
 
-                        0 ->fun_notice(username,flatno,userposition)
+                        0 ->fun_notice(username,flatno,userposition,user_email)
                         1 -> Toast.makeText(context, "Event", Toast.LENGTH_SHORT).show()
-                        2 -> fun_complains(username,flatno,userposition)
+                        2 -> fun_complains(username,flatno,userposition,user_email)
                         3 -> fun_adduser()
                     }
                 }
@@ -160,11 +174,18 @@ class Frag_Home : Fragment() {
         recview.adapter = setadapter
     }
 
-    private fun fun_notice(username: String?, flatno: String?, userposition: String?) {
+    private fun fun_notice(
+        username: String?,
+        flatno: String?,
+        userposition: String?,
+        user_email: String
+    ) {
         var i = Intent(context, Activity_BaseActivity::class.java)
         i.putExtra("id", 1)
         i.putExtra("username","${username.toString()}")
         i.putExtra("flatno","${flatno.toString()}")
+        i.putExtra("useremail","${user_email.toString()}")
+        i.putExtra("userposition","${userposition.toString()}")
         startActivity(i)
     }
 
@@ -173,11 +194,18 @@ class Frag_Home : Fragment() {
         startActivity(i)
     }
 
-    private fun fun_complains(username: String?, flatno: String?, userposition: String?) {
+    private fun fun_complains(
+        username: String?,
+        flatno: String?,
+        userposition: String?,
+        user_email: String
+    ) {
         var i = Intent(context, Activity_BaseActivity::class.java)
         i.putExtra("id", 2)
         i.putExtra("username","${username.toString()}")
         i.putExtra("flatno","${flatno.toString()}")
+        i.putExtra("useremail","${user_email.toString()}")
+        i.putExtra("userposition","${userposition.toString()}")
 
         startActivity(i)
     }

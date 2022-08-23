@@ -37,6 +37,9 @@ class Activity_Splash_act : AppCompatActivity() {
         var user_name: String = ""
         var user_flatno: String = ""
         var user_position: String = ""
+        var pass_email:String=""
+
+
 
 
         Handler(Looper.getMainLooper()).postDelayed({
@@ -69,19 +72,24 @@ class Activity_Splash_act : AppCompatActivity() {
                             "mydata",
                             "welcome ${data.name} ${data.email}  ${data.password} ${data.flatno} ${data.position}"
                         )
-                        Toast.makeText(applicationContext, "Successful login", Toast.LENGTH_SHORT)
-                            .show()
+                        Toast.makeText(applicationContext, "Successful login", Toast.LENGTH_SHORT).show()
+
+
                         loginlayout.visibility = View.GONE
 
                         user_name = "${data.name}"
                         user_flatno = "${data.flatno}"
                         user_position = "${data.position}"
+                        pass_email="${data.email}"
+
+                        Toast.makeText(this@Activity_Splash_act, "email :- ${data.email}, emaildata :- ${data.email}", Toast.LENGTH_SHORT).show()
 
                         val i=Intent(this@Activity_Splash_act,Activity_MainActivity::class.java)
                         Toast.makeText(this@Activity_Splash_act, "From splash screen", Toast.LENGTH_SHORT).show()
                         i.putExtra("splash_username","$user_name")
                         i.putExtra("splash_flatno","$user_flatno")
                         i.putExtra("splash_position","$user_position")
+                        i.putExtra("splash_email","${pass_email}")
                         startActivity(i)
                     }
                 }

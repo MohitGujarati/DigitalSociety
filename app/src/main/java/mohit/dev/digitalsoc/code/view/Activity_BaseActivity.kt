@@ -63,36 +63,35 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         var comp_username = ""
         var comp_flatno = ""
         var comp_position = ""
+        var comp_email = ""
 
         var Bundle = Bundle()
         var id = intent.extras?.get("id")
         var username = intent.extras?.get("username")
         var flatno = intent.extras?.get("flatno")
-        var position = intent.extras?.get("userposition")
-
-
-
+        var position = intent.extras?.get("position")
+        var email = intent.extras?.get("email")
 
         comp_username = username.toString()
         comp_flatno = flatno.toString()
         comp_position = position.toString()
+        comp_email = email.toString()
 
+        Log.d("recived_data_baseact","${comp_username} email:${comp_email} position:${comp_position} flatno:${comp_flatno}")
 
         when (id) {
 
 
             0 -> {
                 profile_Act(
-                    rec_complains,
-                    title,
-                    btn_default,
                     comp_flatno,
                     comp_username,
                     comp_position,
                     position.toString(),
                     tab_layout,
                     cardlayout,
-                    layout_profile
+                    layout_profile,
+                    comp_email
                 )
             }
 
@@ -106,7 +105,9 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                     comp_username,
                     comp_position,
                     position.toString()
+
                 )
+
 
             }
 
@@ -116,7 +117,8 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 btn_default,
                 comp_flatno,
                 comp_username,
-                comp_position
+                comp_position,
+                comp_email
             )
         }
 
@@ -124,16 +126,14 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
 
     private fun profile_Act(
-        recComplains: RecyclerView,
-        title: TextView,
-        btnDefault: ExtendedFloatingActionButton,
         comp_flatno: String,
         comp_username: String,
         comp_position: String,
         position: String,
         tab_layout: LinearLayout,
         cardlayout: LinearLayout,
-        layout_profile: LinearLayout
+        layout_profile: LinearLayout,
+        comp_email: String
     ) {
 
         cardlayout.visibility = View.GONE
@@ -143,11 +143,18 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         var fragmentTransaction = fragmentManager.beginTransaction()
         var fragment = Frag_Profile_card()
 
-        Bundle.putString("compuser", "${comp_username}")
-        Bundle.putString("compflatno", "${comp_flatno}")
-        Bundle.putString("compposition", "${position}")
+        Bundle.putString("baseact_pro_username", "${comp_username}")
+        Bundle.putString("baseact_pro_flatno", "${comp_flatno}")
+        Bundle.putString("baseact_pro_position", "${position}")
+        Bundle.putString("baseact_pro_email", "${comp_email}")
 
         fragment.arguments = Bundle
+
+
+        Log.d("send_data_profileact","${comp_username} email:${comp_email} position:${comp_position} flatno:${comp_flatno}")
+
+
+
 
         fragmentTransaction.add(R.id.layout_profile, fragment).commit()
 
@@ -266,13 +273,14 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         btn_default: ExtendedFloatingActionButton,
         comp_flatno: String,
         comp_username: String,
-        comp_position: String
+        comp_position: String,
+        comp_email: String
 
     ) {
 
         change_color(title, btn_default, 2)
         btn_default.setOnClickListener {
-            btn_complain(btn_default, title, recComplain, comp_flatno, comp_username, comp_position)
+            btn_complain(btn_default, title, recComplain, comp_flatno, comp_username, comp_position,comp_email)
         }
 
         recComplain.layoutManager = LinearLayoutManager(this)
@@ -351,7 +359,8 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         recComplain: RecyclerView,
         comp_flatno: String,
         comp_username: String,
-        comp_position: String
+        comp_position: String,
+    comp_email: String
     ) {
 
         var container = findViewById<LinearLayout>(R.id.container)
@@ -369,8 +378,11 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         Bundle.putString("compuser", "${comp_username}")
         Bundle.putString("compflatno", "${comp_flatno}")
         Bundle.putString("compposition", "${comp_position}")
+        Bundle.putString("compemail", "${comp_email}")
 
         fragment.arguments = Bundle
+
+
 
         fragmentTransaction.add(R.id.container, fragment).commit()
     }
@@ -432,11 +444,12 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        fun goback(comp_username: String, comp_flatno: String, comp_position: String) {
+        fun goback(comp_username: String, comp_flatno: String, comp_position: String,comp_email: String) {
             var i = Intent(this, Activity_MainActivity::class.java)
             i.putExtra("base_username", "${comp_username}")
             i.putExtra("base_flatno", "${comp_flatno}")
             i.putExtra("base_position", "${comp_position}")
+            i.putExtra("base_email", "${comp_email}")
             startActivity(i)
         }
     }
