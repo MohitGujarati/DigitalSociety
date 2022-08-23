@@ -9,11 +9,11 @@
     tools:context=".code.view.Activity_BaseActivity">
 
     <LinearLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/container"
         android:orientation="vertical"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/click_title"
@@ -31,9 +31,9 @@
 
 
     <FrameLayout
-        android:layout_marginTop="-12dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="-12dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rec_complains"
@@ -61,5 +61,28 @@
         app:icon="@drawable/ic_add"
         app:iconTint="@color/white" />
 
+    <LinearLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/mytablayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabSelectedTextColor="@color/teal_200"
+            app:tabTextColor="#000">
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/myviewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 
 </LinearLayout>

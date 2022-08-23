@@ -9,9 +9,12 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.google.android.material.tabs.TabLayout
 import mohit.dev.digitalsoc.R
 import mohit.dev.digitalsoc.code.Adapter.Adapter_complain
 import mohit.dev.digitalsoc.code.Adapter.Adapter_notice
@@ -29,6 +32,9 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     var tts: TextToSpeech? = null
     val BASE_URL = "https://mohitgapp.000webhostapp.com/"
 
+    var mytablayout: TabLayout? = null
+    var myviewpager: ViewPager? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base)
@@ -38,6 +44,11 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         var rec_complains = findViewById<RecyclerView>(R.id.rec_complains)
         // var rec_notice = findViewById<RecyclerView>(R.id.rec_notices)
         var title = findViewById<TextView>(R.id.click_title)
+
+        mytablayout = findViewById(R.id.mytablayout)
+        myviewpager = findViewById(R.id.myviewpager)
+
+        var tab_layout=findViewById<LinearLayout>(R.id.tab_layout)
 
 
         tts = TextToSpeech(this, this)
@@ -70,7 +81,8 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                     comp_flatno,
                     comp_username,
                     comp_position,
-                    position.toString())
+                    position.toString(),
+                tab_layout)
             }
 
             1 -> {
@@ -107,15 +119,27 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         compFlatno: String,
         compUsername: String,
         compPosition: String,
-        toString: String
+        toString: String,
+        tab_layout: LinearLayout
     ) {
 
         title.visibility=View.GONE
         recComplains.visibility=View.GONE
         btnDefault.visibility=View.GONE
+        
+        tab_layout.visibility=View.VISIBLE
+        
+        if (tab_layout.isVisible){
+            Toast.makeText(this, "tab visisble", Toast.LENGTH_SHORT).show()
+        }
+
+        load_viewpager()
 
 
 
+    }
+
+    private fun load_viewpager() {
 
     }
 
@@ -382,6 +406,5 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             startActivity(i)
         }
     }
-
 
 }
