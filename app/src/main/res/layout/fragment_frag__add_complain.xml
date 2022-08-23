@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_viewlayouts"
+    android:orientation="vertical"
+    tools:context=".code.view.Frag_Add_complain">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnsend"
+            style="@style/Widget.Material3.Button.TonalButton.Icon"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="260dp"
+            android:layout_weight="1"
+            android:backgroundTint="#3949AB"
+            android:text="Send"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:icon="@drawable/ic_post"
+            app:iconTint="@color/white" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/profile_pic"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="-2dp"
+            android:background="@drawable/background_viewlayouts"
+            android:backgroundTint="#039BE5"
+            app:cardCornerRadius="20dp">
+
+
+            <ImageView
+                android:id="@+id/profile_img"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:clipToOutline="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/user_img"
+                />
+
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:minWidth="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/tv_name"
+            android:layout_weight="1"
+            android:text="Name"
+            android:textAllCaps="true"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_flatno"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/tv_name"
+            android:layout_weight="2"
+            android:text="Flatno"
+            android:textAllCaps="true"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+
+    <EditText
+
+        android:id="@+id/ed_complains"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:background="@drawable/background_viewlayouts"
+        android:gravity="start"
+        android:hint="What's happening ?\nType your complain here.."
+        android:padding="10dp"
+        android:textStyle="bold" />
+
+
+</LinearLayout>

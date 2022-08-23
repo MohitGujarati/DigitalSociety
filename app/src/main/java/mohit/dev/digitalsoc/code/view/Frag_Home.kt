@@ -1,0 +1,173 @@
+package mohit.dev.digitalsoc.code.view
+
+import android.content.Intent
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.TextView
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import mohit.dev.digitalsoc.R
+import mohit.dev.digitalsoc.code.Adapter.Adapter_Home
+import mohit.dev.digitalsoc.code.Model.ModelClass_Home
+
+
+class Frag_Home : Fragment() {
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        var view = inflater.inflate(R.layout.fragment_frag__home, container, false)
+
+        var recview = view.findViewById<RecyclerView>(R.id.rec_images)
+
+        var tv_owners_name = view.findViewById<TextView>(R.id.tv_owners_name)
+        var flat_no = view.findViewById<TextView>(R.id.flat_no)
+        var users_position = view.findViewById<TextView>(R.id.users_position)
+
+        var profile_card = view.findViewById<LinearLayout>(R.id.profile_card)
+
+
+
+
+        val bundle = arguments
+        val username = bundle!!.getString("username")
+        val flatno = bundle!!.getString("flatno")
+        val userposition = bundle!!.getString("userposition")
+
+        tv_owners_name.text=username.toString()
+        flat_no.text=flatno.toString()
+        users_position.text=userposition.toString()
+
+
+
+
+
+
+
+
+        set_recview(recview, view, tv_owners_name, flat_no, profile_card,username,flatno,userposition)
+        return view
+    }
+
+
+    private fun set_recview(
+        recview: RecyclerView,
+        view: View,
+        tv_owners_name: TextView,
+        flat_no: TextView,
+        profile_card: LinearLayout,
+        username: String?,
+        flatno: String?,
+        userposition: String?
+
+
+    ) {
+
+        recview.layoutManager = GridLayoutManager(view.context, 2)
+
+        var datalist = ArrayList<ModelClass_Home>()
+
+
+        datalist.add(
+            ModelClass_Home(
+                "Notice",
+                R.drawable.ic_notice,
+                "Society updates"
+            )
+
+        )
+
+        datalist.add(
+            ModelClass_Home(
+                "Events",
+                R.drawable.ic_calendar,
+                "Social gathering"
+            )
+
+        )
+
+        datalist.add(
+            ModelClass_Home(
+                "Complain",
+                R.drawable.ic_badreview,
+                "Improvements"
+            )
+
+        )
+
+        datalist.add(
+            ModelClass_Home(
+                "Add User",
+                R.drawable.adduserpng,
+                "new user signup"
+            )
+
+        )
+
+        datalist.add(
+            ModelClass_Home(
+                "Bill",
+                R.drawable.ic_category,
+                "Maintance"
+            )
+
+        )
+
+        datalist.add(
+            ModelClass_Home(
+                "Emergency",
+                R.drawable.ic_category,
+                "24/7 helpline"
+            )
+
+        )
+
+
+        var setadapter =
+            Adapter_Home(view.context, datalist, object : Adapter_Home.CardClickedListener {
+                override fun onCardClicked(position: Int) {
+                    when (position) {
+
+                        0 ->fun_notice(username,flatno,userposition)
+                        1 -> Toast.makeText(context, "Event", Toast.LENGTH_SHORT).show()
+                        2 -> fun_complains(username,flatno,userposition)
+                        3 -> fun_adduser()
+                    }
+                }
+
+
+            })
+        recview.adapter = setadapter
+    }
+
+    private fun fun_notice(username: String?, flatno: String?, userposition: String?) {
+        var i = Intent(context, BaseActivity::class.java)
+        i.putExtra("id", 1)
+        i.putExtra("username","${username.toString()}")
+        i.putExtra("flatno","${flatno.toString()}")
+        startActivity(i)
+    }
+
+    private fun fun_adduser() {
+        var i = Intent(context, Activity_Add_user::class.java)
+        startActivity(i)
+    }
+
+    private fun fun_complains(username: String?, flatno: String?, userposition: String?) {
+        var i = Intent(context, BaseActivity::class.java)
+        i.putExtra("id", 2)
+        i.putExtra("username","${username.toString()}")
+        i.putExtra("flatno","${flatno.toString()}")
+
+        startActivity(i)
+    }
+
+}
