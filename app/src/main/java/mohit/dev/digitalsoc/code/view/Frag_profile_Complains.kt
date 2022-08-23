@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import mohit.dev.digitalsoc.R
@@ -23,7 +24,7 @@ import java.util.*
 
 class Frag_profile_Complains : Fragment() {
     val BASE_URL = "https://mohitgapp.000webhostapp.com/"
-    var tts: TextToSpeech? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,13 +37,13 @@ class Frag_profile_Complains : Fragment() {
 
         var profile_complains = view.findViewById<RecyclerView>(R.id.profile_complain)
 
-        load_complains(profile_complains)
+        load_complains(profile_complains,view)
 
 
         return view
     }
 
-    private fun load_complains(recComplain: RecyclerView) {
+    private fun load_complains(recComplain: RecyclerView, view: View) {
         recComplain.layoutManager = LinearLayoutManager(context)
 
         //retrieving data from 000
@@ -68,16 +69,13 @@ class Frag_profile_Complains : Fragment() {
                     response.body() as ArrayList<Model_usercomplain> /* = java.util.ArrayList<mohit.dev.digitalsoc.code.Model.model_complains> */
 
                 var adapter = Adapter_complain(
-                    view!!.context,
+                   view.context,
                     complaindataitem,
                     object : Adapter_complain.SpeakerClicked {
                         override fun onSpeakerClicked(position: Int, complains: String) {
-                            val text = complains.toString()
-                            tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
-                            tts!!.setPitch(1.0f)
-                            tts!!.setSpeechRate(1.4f)
 
-                           //onInit(1)
+                            Toast.makeText(context, "removed", Toast.LENGTH_SHORT).show()
+
                         }
 
                     }
@@ -94,24 +92,5 @@ class Frag_profile_Complains : Fragment() {
 
 
     }
-
-fun onInit(status: Int) {
-        if (status == TextToSpeech.SUCCESS) {
-            val result = tts!!.setLanguage((Locale.US))
-
-            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                Log.e("mydata", "Not supported")
-            }
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        if (tts != null) {
-            tts!!.stop()
-            tts!!.shutdown()
-        }
-    }
-
 }
 
