@@ -26,10 +26,10 @@ class Frag_Profile_card : Fragment() {
         var tvprofile_user_position=view.findViewById<TextView>(R.id.profile_users_position)
 
         val bundle = arguments
-        val username = bundle!!.getString("baseact_pro_username")
-        val flatno = bundle.getString("baseact_pro_flatno")
-        val position = bundle.getString("baseact_pro_position")
-        val email = bundle.getString("baseact_pro_email")
+        val username = bundle!!.getString("baseact_to_Profile_username")
+        val flatno = bundle.getString("baseact_to_Profile_flatno")
+        val position = bundle.getString("baseact_to_Profile_position")
+        val email = bundle.getString("baseact_to_Profile_email")
 
         tvusername.text=username.toString()
         tvprofile_flatno.text=flatno.toString()

@@ -59,13 +59,13 @@ class Frag_Home : Fragment() {
         user_profile.setOnClickListener {
             val i =Intent(context,Activity_BaseActivity::class.java)
             i.putExtra("id", 0)
-            i.putExtra("username","${username.toString()}")
-            i.putExtra("flatno","${flatno.toString()}")
-            i.putExtra("email","${useremail.toString()}")
-            i.putExtra("position","${userposition.toString()}")
+            i.putExtra("username","${tv_owners_name.text.toString()}")
+            i.putExtra("flatno","${flat_no.text.toString()}")
+            i.putExtra("email","${user_email.toString()}")
+            i.putExtra("position","${users_position.text.toString()}")
 
 
-            Log.d("passing_data_base","${username} email:${useremail} position:${userposition} flatno:${flatno}")
+            Log.d("passing_data_base","${tv_owners_name.text.toString()} email:${user_email} position:${users_position.text.toString()} flatno:${flat_no.text.toString()}")
 
 
 

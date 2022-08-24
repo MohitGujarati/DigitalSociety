@@ -60,17 +60,25 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         tts = TextToSpeech(this, this)
 
-        var comp_username = ""
-        var comp_flatno = ""
-        var comp_position = ""
-        var comp_email = ""
 
         var Bundle = Bundle()
         var id = intent.extras?.get("id")
         var username = intent.extras?.get("username")
         var flatno = intent.extras?.get("flatno")
-        var position = intent.extras?.get("position")
-        var email = intent.extras?.get("email")
+        var position = intent.extras?.get("userposition")
+        var email = intent.extras?.get("useremail")
+
+
+        var profile_email= intent.extras?.get("email")
+        var profile_position= intent.extras?.get("position")
+        var profile_username= intent.extras?.get("username")
+        var profile_flatno= intent.extras?.get("flatno")
+
+        var comp_username = ""
+        var comp_flatno = ""
+        var comp_position = ""
+        var comp_email = ""
+
 
         comp_username = username.toString()
         comp_flatno = flatno.toString()
@@ -84,14 +92,14 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
             0 -> {
                 profile_Act(
-                    comp_flatno,
-                    comp_username,
-                    comp_position,
+                    profile_flatno.toString(),
+                    profile_username.toString(),
+                    profile_position.toString(),
                     position.toString(),
                     tab_layout,
                     cardlayout,
                     layout_profile,
-                    comp_email
+                    profile_email.toString()
                 )
             }
 
@@ -143,10 +151,10 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         var fragmentTransaction = fragmentManager.beginTransaction()
         var fragment = Frag_Profile_card()
 
-        Bundle.putString("baseact_pro_username", "${comp_username}")
-        Bundle.putString("baseact_pro_flatno", "${comp_flatno}")
-        Bundle.putString("baseact_pro_position", "${position}")
-        Bundle.putString("baseact_pro_email", "${comp_email}")
+        Bundle.putString("baseact_to_Profile_username", "${comp_username}")
+        Bundle.putString("baseact_to_Profile_flatno", "${comp_flatno}")
+        Bundle.putString("baseact_to_Profile_position", "${comp_position}")
+        Bundle.putString("baseact_to_Profile_email", "${comp_email}")
 
         fragment.arguments = Bundle
 

@@ -38,6 +38,7 @@ class Frag_Add_complain : Fragment() {
         val position = bundle!!.getString("compposition")
         val email = bundle!!.getString("compemail")
 
+        Log.d("recived_data_addfragment","${username} email:${email} position:$position, flatno:${flatno}")
 
         tv_flatno.text=flatno.toString()
         tv_name.text=username.toString()
@@ -63,7 +64,7 @@ class Frag_Add_complain : Fragment() {
                 "$get_complains"
             )
 
-            Log.d("recived_data_addfragment","${get_name} email:${get_email} position:not needed, flatno:${get_flatno}")
+         //   Log.d("recived_data_addfragment","${get_name} email:${get_email} position:not needed, flatno:${get_flatno}")
 
             result.enqueue(object : Callback<List<Model_usercomplain>?> {
                 override fun onResponse(
