@@ -25,7 +25,7 @@ class Activity_MainActivity : AppCompatActivity() {
         https://mohitgapp.000webhostapp.com/
          */
 
-        Toast.makeText(this, "$user_email", Toast.LENGTH_SHORT).show()
+      //  Toast.makeText(this, "$user_email", Toast.LENGTH_SHORT).show()
 
         var containerview = findViewById<LinearLayout>(R.id.containerview)
 
