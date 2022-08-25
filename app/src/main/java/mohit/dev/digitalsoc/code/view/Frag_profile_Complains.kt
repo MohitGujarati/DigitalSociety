@@ -20,9 +20,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-class Frag_profile_Complains : Fragment() {
+class Frag_profile_Complains(comp_email: String) : Fragment() {
     val BASE_URL = "https://mohitgapp.000webhostapp.com/"
 
+
+    var emails=comp_email
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,41 +33,16 @@ class Frag_profile_Complains : Fragment() {
         // Inflate the layout for this fragment
 
 
+
         var view = inflater.inflate(R.layout.fragment_frag_profile__complains, container, false)
 
 
         var profile_complains = view.findViewById<RecyclerView>(R.id.profile_complain)
 
 
-/*
-        var string:String
 
 
-        var Bundle=arguments
-        var txtemial=Bundle?.getString("frg_email")
-
-        var  txt_email:String=""
-        if (!txtemial.isNullOrBlank()) {
-            if (txtemial?.isBlank()==false){
-
-                string=txtemial.toString()
-                txt_email="${string.toString()}"
-
-                Log.d("StringFrag","${txt_email.toString()}")
-
-
-            }else{
-                Log.d("StringFrag","else")
-                Toast.makeText(context, "now blank $txtemial", Toast.LENGTH_SHORT).show()
-            }
-
-
-        }
-
- */
-
-
-        load_complains(profile_complains, view, "1")
+        load_complains(profile_complains, view, "1",emails)
 
 
 
@@ -77,6 +54,7 @@ class Frag_profile_Complains : Fragment() {
         recComplain: RecyclerView,
         view: View,
         txt_email: String,
+        emails: String,
 
         ) {
 
@@ -90,22 +68,8 @@ class Frag_profile_Complains : Fragment() {
             .create(Api_interface::class.java)
 
 
-/*
-        var emailid=txt_email
-        var one=1
 
-
-
-        var obj=Frag_Profile_card()
-        var result_email=obj.emailfrg.toString()
-
-
-        var Bundle=arguments
-        Log.d("emailid","1")
-
- */
-
-        var result = retrofit.user_complains("Admin1")
+        var result = retrofit.user_complains("$emails")
 
 
         var usercomplaindataitem: ArrayList<Model_usercomplain> = ArrayList()

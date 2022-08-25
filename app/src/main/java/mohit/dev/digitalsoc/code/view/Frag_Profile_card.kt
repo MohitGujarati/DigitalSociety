@@ -108,7 +108,7 @@ class Frag_Profile_card : Fragment() {
         var adapter:ViewPagerAdapter =
             ViewPagerAdapter(parentFragmentManager)
 
-        adapter.addFragment(Frag_profile_Complains(), "Complains",comp_email,fragmentEmailList)
+        adapter.addFragment(Frag_profile_Complains(comp_email), "Complains",comp_email,fragmentEmailList)
         adapter.addFragment(Frag_profile_Notice(), "Notice",comp_email,fragmentEmailList)
 
 
