@@ -80,28 +80,10 @@
         <LinearLayout
             android:id="@+id/layout_profile"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="4dp"
             android:background="@drawable/background_viewlayouts"/>
-
-
-
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/mytablayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/background_viewlayouts"
-            app:tabSelectedTextColor="#5E35B1"
-            app:tabTextAppearance="@style/TextAppearance.AppCompat.Body2">
-
-        </com.google.android.material.tabs.TabLayout>
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/myviewpager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
     </LinearLayout>
 

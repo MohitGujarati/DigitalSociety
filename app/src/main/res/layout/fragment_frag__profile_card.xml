@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".code.view.Frag_Profile_card">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:elevation="50dp"
         android:background="@drawable/background_profile"
+        android:elevation="50dp"
         android:orientation="horizontal"
         android:padding="10dp">
 
@@ -25,8 +26,8 @@
                 style="@style/TextAppearance.AppCompat.Headline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_weight="1"
                 android:text="Your Profile"
                 android:textColor="@color/white"
@@ -113,12 +114,47 @@
                 android:text="Chairman"
                 android:textColor="@color/white" />
 
+            <TextView
+                android:id="@+id/profile_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profile_users_position"
+                android:layout_toRightOf="@+id/profile_pic"
+                android:gravity="start"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:text="Chairman" />
+
 
         </RelativeLayout>
 
 
-
-
     </RelativeLayout>
 
-</FrameLayout>
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/mytablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-2dp"
+        app:tabSelectedTextColor="#5E35B1"
+        app:tabTextAppearance="@style/TextAppearance.AppCompat.Body2">
+
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/myviewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/invisible_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical"/>
+
+
+
+</LinearLayout>

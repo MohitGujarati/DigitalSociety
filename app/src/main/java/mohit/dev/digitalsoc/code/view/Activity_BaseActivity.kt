@@ -35,8 +35,6 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     var tts: TextToSpeech? = null
     val BASE_URL = "https://mohitgapp.000webhostapp.com/"
 
-    var mytablayout: TabLayout? = null
-    var myviewpager: ViewPager? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,8 +47,6 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         // var rec_notice = findViewById<RecyclerView>(R.id.rec_notices)
         var title = findViewById<TextView>(R.id.click_title)
 
-        mytablayout = findViewById(R.id.mytablayout)
-        myviewpager = findViewById(R.id.myviewpager)
 
         var tab_layout = findViewById<LinearLayout>(R.id.tab_layout)
         var cardlayout = findViewById<LinearLayout>(R.id.cardlayout)
@@ -85,14 +81,18 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         comp_position = position.toString()
         comp_email = email.toString()
 
-        Log.d("recived_data_baseact","${comp_username} email:${comp_email} position:${comp_position} flatno:${comp_flatno}")
+
+        Log.d(
+            "recived_data_baseact",
+            "${comp_username} email:${comp_email} position:${comp_position} flatno:${comp_flatno}"
+        )
 
         when (id) {
 
 
             0 -> {
                 profile_Act(
-                    profile_flatno.toString(),
+                    comp_flatno.toString(),
                     profile_username.toString(),
                     profile_position.toString(),
                     position.toString(),
@@ -133,6 +133,7 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     }
 
+
     private fun profile_Act(
         comp_flatno: String,
         comp_username: String,
@@ -151,47 +152,22 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         var fragmentTransaction = fragmentManager.beginTransaction()
         var fragment = Frag_Profile_card()
 
+
         Bundle.putString("baseact_to_Profile_username", "${comp_username}")
         Bundle.putString("baseact_to_Profile_flatno", "${comp_flatno}")
         Bundle.putString("baseact_to_Profile_position", "${comp_position}")
         Bundle.putString("baseact_to_Profile_email", "${comp_email}")
 
         fragment.arguments = Bundle
-
-        Log.d("send_data_profileact","${comp_username} email:${comp_email} position:${comp_position} flatno:${comp_flatno}")
+        Log.d(
+            "send_data_profileact",
+            "${comp_username} email:${comp_email} position:${comp_position} flatno:${comp_flatno}"
+        )
 
         fragmentTransaction.add(R.id.layout_profile, fragment).commit()
 
-
-
-
-
-        if (tab_layout.isVisible) {
-            Toast.makeText(this, "visible", Toast.LENGTH_SHORT).show()
-            load_viewpager()
-        }
-
-
     }
 
-    private fun load_viewpager() {
-
-        mytablayout!!.tabGravity = TabLayout.GRAVITY_FILL
-
-        setViewPager(myviewpager!!)
-        mytablayout!!.setupWithViewPager(myviewpager)
-
-
-    }
-
-    fun setViewPager(viewPager: ViewPager) {
-        var adapter: ViewPagerAdapter = ViewPagerAdapter(supportFragmentManager)
-
-        adapter.addFragment(Frag_profile_Complains(), "Complains")
-        adapter.addFragment(Frag_profile_Notice(), "Notice")
-
-        viewPager.adapter = adapter
-    }
 
 
     //Recycler view for notice
@@ -284,7 +260,15 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         change_color(title, btn_default, 2)
         btn_default.setOnClickListener {
-            btn_complain(btn_default, title, recComplain, comp_flatno, comp_username, comp_position,comp_email)
+            btn_complain(
+                btn_default,
+                title,
+                recComplain,
+                comp_flatno,
+                comp_username,
+                comp_position,
+                comp_email
+            )
         }
 
         recComplain.layoutManager = LinearLayoutManager(this)
@@ -364,7 +348,7 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         comp_flatno: String,
         comp_username: String,
         comp_position: String,
-    comp_email: String
+        comp_email: String
     ) {
 
         var container = findViewById<LinearLayout>(R.id.container)
@@ -448,7 +432,12 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        fun goback(comp_username: String, comp_flatno: String, comp_position: String,comp_email: String) {
+        fun goback(
+            comp_username: String,
+            comp_flatno: String,
+            comp_position: String,
+            comp_email: String
+        ) {
             var i = Intent(this, Activity_MainActivity::class.java)
             i.putExtra("base_username", "${comp_username}")
             i.putExtra("base_flatno", "${comp_flatno}")
@@ -458,30 +447,4 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
     }
 
-
-    class ViewPagerAdapter : FragmentPagerAdapter {
-        var fragmentList: ArrayList<Fragment> = ArrayList()
-        var fragmentTitleList: ArrayList<String> = ArrayList()
-
-        constructor(supportFragmentManager: FragmentManager) : super(supportFragmentManager)
-
-        override fun getCount(): Int {
-            return fragmentList.size
-        }
-
-        override fun getItem(position: Int): Fragment {
-            return fragmentList.get(position)
-        }
-
-        override fun getPageTitle(position: Int): String {
-            return fragmentTitleList.get(position)
-        }
-
-        fun addFragment(fragment: Fragment, title: String) {
-            fragmentList.add(fragment)
-            fragmentTitleList.add(title)
-        }
-
-
-    }
 }

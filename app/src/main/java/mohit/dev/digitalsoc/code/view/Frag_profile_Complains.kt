@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,6 +24,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 class Frag_profile_Complains : Fragment() {
     val BASE_URL = "https://mohitgapp.000webhostapp.com/"
 
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,14 +38,54 @@ class Frag_profile_Complains : Fragment() {
 
 
         var profile_complains = view.findViewById<RecyclerView>(R.id.profile_complain)
+        var tvprfemail = view.findViewById<TextView>(R.id.tvprfemail)
 
-        load_complains(profile_complains,view)
+
+/*
+        var string:String
+
+
+        var Bundle=arguments
+        var txtemial=Bundle?.getString("frg_email")
+
+        var  txt_email:String=""
+        if (!txtemial.isNullOrBlank()) {
+            if (txtemial?.isBlank()==false){
+
+                string=txtemial.toString()
+                txt_email="${string.toString()}"
+
+                Log.d("StringFrag","${txt_email.toString()}")
+
+
+            }else{
+                Log.d("StringFrag","else")
+                Toast.makeText(context, "now blank $txtemial", Toast.LENGTH_SHORT).show()
+            }
+
+
+        }
+
+ */
+
+
+        load_complains(profile_complains,view,"1",tvprfemail)
+
 
 
         return view
     }
 
-    private fun load_complains(recComplain: RecyclerView, view: View) {
+
+
+
+    private fun load_complains(
+        recComplain: RecyclerView,
+        view: View,
+        txt_email: String,
+        tvprfemail: TextView
+    ) {
+
         recComplain.layoutManager = LinearLayoutManager(context)
 
         //retrieving data from 000
@@ -52,7 +96,24 @@ class Frag_profile_Complains : Fragment() {
             .create(Api_interface::class.java)
 
 
-        var result = retrofit.user_complains(email = "Admin1")
+/*
+        var emailid=txt_email
+        var one=1
+
+
+
+        var obj=Frag_Profile_card()
+        var result_email=obj.emailfrg.toString()
+
+
+        var Bundle=arguments
+        Log.d("emailid","1")
+
+ */
+
+        var result = retrofit.user_complains("Admin1")
+
+
 
 
         var usercomplaindataitem: ArrayList<Model_usercomplain> = ArrayList()
@@ -64,6 +125,8 @@ class Frag_profile_Complains : Fragment() {
             ) {
 
                 Log.d("recview", "$response")
+
+
 
                 usercomplaindataitem =
                     response.body() as ArrayList<Model_usercomplain> /* = java.util.ArrayList<mohit.dev.digitalsoc.code.Model.model_complains> */
@@ -95,7 +158,7 @@ class Frag_profile_Complains : Fragment() {
                         ) {
                             Toast.makeText(context, "Delete $id", Toast.LENGTH_SHORT).show()
 
-                            var retrofit = Retrofit.Builder().baseUrl("https://mohitgapp.000webhostapp.com/")
+                            var retrofit = Retrofit.Builder().baseUrl(BASE_URL)
                                 .addConverterFactory(GsonConverterFactory.create())
                                 .build()
                                 .create(Api_interface::class.java)
