@@ -35,7 +35,7 @@ class Activity_MainActivity : AppCompatActivity() {
 
         user_email=splashemail.toString()
 
-        Toast.makeText(this, "Act_main email:$user_email", Toast.LENGTH_SHORT).show()
+     //   Toast.makeText(this, "Act_main email:$user_email", Toast.LENGTH_SHORT).show()
 
         if (add_id != null) {
             getname(extras, add_id)

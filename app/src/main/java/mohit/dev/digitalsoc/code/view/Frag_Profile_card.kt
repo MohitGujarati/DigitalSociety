@@ -21,7 +21,7 @@ class Frag_Profile_card : Fragment() {
    lateinit var mytablayout: TabLayout
     var myviewpager: ViewPager? = null
 
-    var fragmentEmailList: ArrayList<String> = ArrayList()
+
 
 
     override fun onCreateView(
@@ -59,13 +59,8 @@ class Frag_Profile_card : Fragment() {
 
 
 
-        loadtabs(mytablayout,email.toString(),profile_email,fragmentEmailList)
+        loadtabs(mytablayout,email.toString())
 
-        fragmentEmailList.add(profile_email.toString())
-
-        Log.d("fragmentEmailList_card","${fragmentEmailList.toString()}")
-
-        Log.d("ohh","${fragmentEmailList.toString()}")
 
         return view
     }
@@ -75,31 +70,29 @@ class Frag_Profile_card : Fragment() {
     private fun loadtabs(
         tab_layout: TabLayout,
         email: String,
-        profile_email: TextView,
-        fragmentEmailList: ArrayList<String>
+
     ) {
         if (tab_layout.isVisible) {
-            Toast.makeText(context, "visible", Toast.LENGTH_SHORT).show()
-            load_viewpager(email,profile_email)
+            load_viewpager(email)
         }
     }
 
-    private fun load_viewpager(comp_email: String,profile_email: TextView) {
+    private fun load_viewpager(comp_email: String) {
 
         mytablayout!!.tabGravity = TabLayout.GRAVITY_FILL
 
-        setViewPager(myviewpager!!, comp_email,profile_email,fragmentEmailList)
+        setViewPager(myviewpager!!, comp_email)
         mytablayout!!.setupWithViewPager(myviewpager)
 
 
     }
 
-    fun setViewPager(viewPager: ViewPager, comp_email: String,profile_email: TextView,fragmentEmailList: ArrayList<String>) {
+    fun setViewPager(viewPager: ViewPager, comp_email: String) {
         var adapter:ViewPagerAdapter =
             ViewPagerAdapter(parentFragmentManager)
 
-        adapter.addFragment(Frag_profile_Complains(comp_email), "Complains",comp_email,fragmentEmailList)
-        adapter.addFragment(Frag_profile_Notice(), "Notice",comp_email,fragmentEmailList)
+        adapter.addFragment(Frag_profile_Complains(comp_email), "Complains",comp_email)
+        adapter.addFragment(Frag_profile_Notice(), "Notice",comp_email)
 
 
         viewPager.adapter = adapter
@@ -133,7 +126,7 @@ class Frag_Profile_card : Fragment() {
 
 
 
-        fun addFragment(fragment: Fragment, title: String, comp_email: String,fragmentEmailList: ArrayList<String>) {
+        fun addFragment(fragment: Fragment, title: String, comp_email: String) {
             fragmentList.add(fragment)
             fragmentTitleList.add(title)
 

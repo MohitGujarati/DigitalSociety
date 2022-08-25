@@ -159,10 +159,7 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         Bundle.putString("baseact_to_Profile_email", "${comp_email}")
 
         fragment.arguments = Bundle
-        Log.d(
-            "send_data_profileact",
-            "${comp_username} email:${comp_email} position:${comp_position} flatno:${comp_flatno}"
-        )
+        Log.d("send_data_profileact", "${comp_username} email:${comp_email} position:${comp_position} flatno:${comp_flatno}")
 
         fragmentTransaction.add(R.id.layout_profile, fragment).commit()
 
@@ -181,8 +178,6 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         position: String
     ) {
 
-
-        Toast.makeText(this, "load notice", Toast.LENGTH_SHORT).show()
         change_color(title, btn_default, 1)
 
 

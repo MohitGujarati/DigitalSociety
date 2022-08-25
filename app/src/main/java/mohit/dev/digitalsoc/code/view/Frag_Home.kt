@@ -73,11 +73,6 @@ class Frag_Home : Fragment() {
             startActivity(i)
         }
 
-
-
-
-
-
         set_recview(recview, view, tv_owners_name, flat_no, profile_card,username,flatno,userposition,user_email)
         return view
     }
