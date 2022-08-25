@@ -3,12 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".code.view.Frag_profile_Complains">
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/profile_complain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/layout_complain_list"/>
+       />
+
+
 
 </LinearLayout>

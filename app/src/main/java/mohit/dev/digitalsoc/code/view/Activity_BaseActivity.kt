@@ -158,11 +158,7 @@ class Activity_BaseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         fragment.arguments = Bundle
 
-
         Log.d("send_data_profileact","${comp_username} email:${comp_email} position:${comp_position} flatno:${comp_flatno}")
-
-
-
 
         fragmentTransaction.add(R.id.layout_profile, fragment).commit()
 

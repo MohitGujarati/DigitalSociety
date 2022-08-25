@@ -1,8 +1,8 @@
 package mohit.dev.digitalsoc.code.Apiinterface
 
 import mohit.dev.digitalsoc.code.Model.Model_noticedb
-import mohit.dev.digitalsoc.code.Model.Model_userdb
 import mohit.dev.digitalsoc.code.Model.Model_usercomplain
+import mohit.dev.digitalsoc.code.Model.Model_userdb
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -27,7 +27,7 @@ interface Api_interface {
 
 
     @GET("subject.php")
-    fun subject():Call<List<Model_usercomplain>>
+    fun subject(): Call<List<Model_usercomplain>>
 
     @FormUrlEncoded
     @POST("complain.php")
@@ -42,12 +42,17 @@ interface Api_interface {
     @FormUrlEncoded
     @POST("delete_complain.php")
     fun delete_complain(
-        @Field("id") id:Int
-    ):Call<List<Model_usercomplain>>
+        @Field("id") id: Int
+    ): Call<List<Model_usercomplain>>
+
+    @GET("user_complains.php")
+    fun user_complains(
+        @Query("email") email: String
+    ): Call<List<Model_usercomplain>>
 
 
     @GET("get_notice.php")
-    fun get_notice():Call<List<Model_noticedb>>
+    fun get_notice(): Call<List<Model_noticedb>>
 
 
     @FormUrlEncoded
@@ -57,8 +62,6 @@ interface Api_interface {
         @Field("notice") notice: String,
         @Field("date") date: String
     ): Call<List<Model_noticedb>>
-
-
 
 
 }

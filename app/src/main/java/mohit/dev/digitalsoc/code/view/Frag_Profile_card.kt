@@ -6,12 +6,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.view.isVisible
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 import mohit.dev.digitalsoc.R
 import org.w3c.dom.Text
 
 class Frag_Profile_card : Fragment() {
 
+    var mytablayout: TabLayout? = null
+    var myviewpager: ViewPager? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,6 +31,9 @@ class Frag_Profile_card : Fragment() {
         var tvprofile_flatno=view.findViewById<TextView>(R.id.profile_flatno)
         var tvprofile_tvposition=view.findViewById<TextView>(R.id.profile_tvposition)
         var tvprofile_user_position=view.findViewById<TextView>(R.id.profile_users_position)
+
+
+
 
         val bundle = arguments
         val username = bundle!!.getString("baseact_to_Profile_username")
