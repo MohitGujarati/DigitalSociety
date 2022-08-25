@@ -61,16 +61,6 @@ class Frag_Profile_card : Fragment() {
 
         loadtabs(mytablayout,email.toString(),profile_email,fragmentEmailList)
 
-        /*
-        emailfrg=profile_email.text.toString()
-        Log.d("recived_data_tab","${emailfrg}")
-
-
-        senddata(profile_email)
-
-         */
-
-
         fragmentEmailList.add(profile_email.toString())
 
         Log.d("fragmentEmailList_card","${fragmentEmailList.toString()}")
@@ -152,27 +142,6 @@ class Frag_Profile_card : Fragment() {
 
     }
 
-    /*
-    private fun senddata(profileEmail: TextView) {
-
-        var Bundle = Bundle()
-        var fragmentManager = parentFragmentManager
-        var fragmentTransaction = fragmentManager.beginTransaction()
-        var fragment = Frag_profile_Complains()
-
-        if (profileEmail != null) {
-            Bundle.putString("frg_emails", "${profileEmail.text.toString()}")
-        }else{
-            Bundle.putString("frg_emails", "1")
-        }
-
-        fragment.arguments = Bundle
-
-        fragmentTransaction.add(R.id.invisible_profile, fragment).commit()
-
-    }
-
-     */
 
 
 }
