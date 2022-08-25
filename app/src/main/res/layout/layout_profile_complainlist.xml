@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginBottom="5dp"
+    android:elevation="20dp"
+    app:cardCornerRadius="20dp"
     android:orientation="vertical"
-    android:layout_margin="2dp"
-    android:background="@drawable/background_viewlayouts"
+    style="@style/Widget.Material3.CardView.Elevated"
     android:layout_height="wrap_content">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+   >
 
 
     <!--Dp/Name/flatno-->
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -46,6 +59,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:gravity="top"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
             android:layout_toRightOf="@+id/tv_name"
             android:layout_weight="1"
@@ -58,6 +73,8 @@
             style="@style/TextAppearance.AppCompat.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="top"
+            android:layout_marginTop="10dp"
             android:layout_gravity="center"
             android:layout_marginLeft="7dp"
             android:layout_toRightOf="@+id/tv_name"
@@ -93,56 +110,58 @@
 
     <LinearLayout
         android:id="@+id/layl"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:background="@drawable/background_viewlayouts"
-        android:gravity="center"
+        android:gravity="start"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/profile_edit"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_margin="5dp"
-            android:padding="2dp"
-            android:layout_weight="1"
-            android:background="@drawable/background_viewlayouts"
-            android:src="@drawable/ic_edit" />
+
 
         <TextView
             style="@style/TextAppearance.AppCompat.Body2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:gravity="center"
             android:background="@drawable/background_viewlayouts"
             android:layout_margin="5dp"
-            android:padding="2dp"
-            android:layout_weight="1"
+            android:padding="5dp"
+
             android:text="❤15" />
 
         <ImageView
+            android:id="@+id/profile_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            style="@style/ThemeOverlay.Material3.Button.ElevatedButton"
+            android:background="@drawable/background_viewlayouts"
+            android:src="@drawable/ic_edit" />
+
+        <ImageView
             android:id="@+id/profile_delete"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:background="@drawable/background_viewlayouts"
             android:layout_margin="5dp"
-            android:padding="2dp"
+            android:padding="5dp"
 
-            android:layout_weight="1"
             android:src="@drawable/ic_delete" />
 
         <ImageView
             android:id="@+id/iv_speaker"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_margin="5dp"
-            android:padding="2dp"
-            android:layout_weight="1"
+            android:padding="5dp"
             android:layout_gravity="center"
             android:background="@drawable/background_viewlayouts"
             android:src="@drawable/ic_speaker" />
 
-    </LinearLayout>
 
+
+    </LinearLayout>
 </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
