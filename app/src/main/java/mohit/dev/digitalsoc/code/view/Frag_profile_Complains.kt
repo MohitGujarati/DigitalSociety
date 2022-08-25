@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,8 +24,6 @@ class Frag_profile_Complains : Fragment() {
     val BASE_URL = "https://mohitgapp.000webhostapp.com/"
 
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,7 +35,6 @@ class Frag_profile_Complains : Fragment() {
 
 
         var profile_complains = view.findViewById<RecyclerView>(R.id.profile_complain)
-        var tvprfemail = view.findViewById<TextView>(R.id.tvprfemail)
 
 
 /*
@@ -69,7 +65,7 @@ class Frag_profile_Complains : Fragment() {
  */
 
 
-        load_complains(profile_complains,view,"1",tvprfemail)
+        load_complains(profile_complains, view, "1")
 
 
 
@@ -77,14 +73,12 @@ class Frag_profile_Complains : Fragment() {
     }
 
 
-
-
     private fun load_complains(
         recComplain: RecyclerView,
         view: View,
         txt_email: String,
-        tvprfemail: TextView
-    ) {
+
+        ) {
 
         recComplain.layoutManager = LinearLayoutManager(context)
 
@@ -114,8 +108,6 @@ class Frag_profile_Complains : Fragment() {
         var result = retrofit.user_complains("Admin1")
 
 
-
-
         var usercomplaindataitem: ArrayList<Model_usercomplain> = ArrayList()
 
         result.enqueue(object : Callback<List<Model_usercomplain>?> {
@@ -132,9 +124,9 @@ class Frag_profile_Complains : Fragment() {
                     response.body() as ArrayList<Model_usercomplain> /* = java.util.ArrayList<mohit.dev.digitalsoc.code.Model.model_complains> */
 
                 var adapter = Adapter_profileComplain(
-                   view.context,
+                    view.context,
                     usercomplaindataitem,
-                    object : Adapter_profileComplain.btnclicked{
+                    object : Adapter_profileComplain.btnclicked {
                         override fun onSpeakerClicked(position: Int, complains: String) {
                             Toast.makeText(context, "Speaker", Toast.LENGTH_SHORT).show()
                         }
@@ -165,7 +157,7 @@ class Frag_profile_Complains : Fragment() {
 
 
                             var result = retrofit.delete_complain(
-                               id
+                                id
                             )
 
                             result.enqueue(object : Callback<List<Model_usercomplain>?> {
