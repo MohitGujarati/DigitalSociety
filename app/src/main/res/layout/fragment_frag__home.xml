@@ -8,11 +8,20 @@
     tools:context=".code.view.Frag_Home">
 
     <!-- TODO: Update blank fragment layout -->
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        style="@style/Widget.Material3.CardView.Outlined"
+        app:cardCornerRadius="20dp">
+
+
     <LinearLayout
         android:id="@+id/profile_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+
 
         android:orientation="vertical">
 
@@ -172,6 +181,8 @@
         </RelativeLayout>
 
     </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
 
     <androidx.recyclerview.widget.RecyclerView

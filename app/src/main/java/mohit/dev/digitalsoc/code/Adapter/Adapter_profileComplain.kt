@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButton
 import mohit.dev.digitalsoc.R
 import mohit.dev.digitalsoc.code.Model.Model_usercomplain
 
@@ -72,8 +73,8 @@ class Adapter_profileComplain(
         var tvname = item.findViewById<TextView>(R.id.tv_name)
         var flatno = item.findViewById<TextView>(R.id.tv_flatno)
         var complain = item.findViewById<TextView>(R.id.tv_complain)
-        var iv_speaker = item.findViewById<ImageView>(R.id.iv_speaker)
-        var iv_Edit = item.findViewById<ImageView>(R.id.profile_edit)
-        var iv_delete = item.findViewById<ImageView>(R.id.profile_delete)
+        var iv_speaker = item.findViewById<MaterialButton>(R.id.iv_speaker)
+        var iv_Edit = item.findViewById<MaterialButton>(R.id.profile_edit)
+        var iv_delete = item.findViewById<MaterialButton>(R.id.profile_delete)
     }
 }

@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import mohit.dev.digitalsoc.R
 import mohit.dev.digitalsoc.code.Model.ModelClass_Home
 
@@ -50,7 +51,7 @@ class Adapter_Home(
         var iv_image = itemview.findViewById<ImageView>(R.id.iv_icons)
         var tv_title = itemview.findViewById<TextView>(R.id.tv_iconsname)
         var tv_hint = itemview.findViewById<TextView>(R.id.tv_hint)
-        var container = itemview.findViewById<CardView>(R.id.container)
+        var container = itemview.findViewById<MaterialCardView>(R.id.container)
 
 
     }

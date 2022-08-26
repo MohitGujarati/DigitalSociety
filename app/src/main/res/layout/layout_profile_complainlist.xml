@@ -112,52 +112,66 @@
         android:id="@+id/layl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:gravity="start"
+        android:layout_margin="-1dp"
+        android:gravity="center"
+        android:layout_gravity="start"
         android:orientation="horizontal">
 
 
 
-        <TextView
+        <com.google.android.material.button.MaterialButton
             style="@style/TextAppearance.AppCompat.Body2"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:gravity="center"
-            android:background="@drawable/background_viewlayouts"
+            android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:stateListAnimator="@drawable/ic_edit"
+            app:iconGravity="textStart"
+            android:textStyle="bold"
             android:padding="5dp"
-
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
             android:text="❤15" />
 
-        <ImageView
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/profile_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_margin="5dp"
-            android:padding="5dp"
-            style="@style/ThemeOverlay.Material3.Button.ElevatedButton"
-            android:background="@drawable/background_viewlayouts"
-            android:src="@drawable/ic_edit" />
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:stateListAnimator="@drawable/ic_delete"
+            app:iconTint="@color/black"
+            app:iconSize="20dp"
+            android:text=""
+            android:layout_margin="3dp"
+            android:textColor="@color/black"
+            app:icon="@drawable/ic_edit"
+            android:backgroundTint="@color/white"
+            />
 
-        <ImageView
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/profile_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:background="@drawable/background_viewlayouts"
-            android:layout_margin="5dp"
-            android:padding="5dp"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:stateListAnimator="@drawable/ic_delete"
+            app:iconTint="@color/black"
+            app:iconSize="20dp"
+            android:text=""
+            android:layout_margin="3dp"
+            android:textColor="@color/black"
+            app:icon="@drawable/ic_delete"
+            android:backgroundTint="@color/white"/>
 
-            android:src="@drawable/ic_delete" />
-
-        <ImageView
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/iv_speaker"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_margin="5dp"
-            android:padding="5dp"
-            android:layout_gravity="center"
-            android:background="@drawable/background_viewlayouts"
-            android:src="@drawable/ic_speaker" />
+            android:layout_width="60dp"
+            app:iconSize="20dp"
+            android:layout_margin="3dp"
+            android:layout_height="wrap_content"
+            android:stateListAnimator="@drawable/ic_edit"
+            app:iconTint="@color/black"
+            android:text=""
+            android:textColor="@color/black"
+            app:icon="@drawable/ic_speaker"
+            android:backgroundTint="@color/white"
+             />
 
 
 

@@ -7,6 +7,18 @@
     android:orientation="vertical"
     tools:context=".code.view.Frag_Profile_card">
 
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:elevation="10dp"
+        app:cardCornerRadius="18dp"
+        style="@style/Widget.Material3.CardView.Filled"
+        android:layout_height="wrap_content">
+
+
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -131,6 +143,8 @@
 
 
     </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/mytablayout"
