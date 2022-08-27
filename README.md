@@ -1,7 +1,7 @@
 # DigitalSociety
 
 
-TECHNOLOGY USED:-| Kotlin,Retrofit,Php,pHPMyAdmin,MySql, Material design
+TECHNOLOGY USED:-| Kotlin,Retrofit,Php,pHPMyAdmin,Sql, Material design
 
 About Digital society 
 
