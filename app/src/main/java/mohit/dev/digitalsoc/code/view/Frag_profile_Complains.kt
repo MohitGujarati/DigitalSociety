@@ -39,7 +39,7 @@ class Frag_profile_Complains(comp_email: String) : Fragment() {
         var profile_complains = view.findViewById<RecyclerView>(R.id.profile_complain)
 
 
-        load_complains(profile_complains, view, "1", emails)
+        load_complains(profile_complains, view, emails)
 
 
 
@@ -50,7 +50,6 @@ class Frag_profile_Complains(comp_email: String) : Fragment() {
     private fun load_complains(
         recComplain: RecyclerView,
         view: View,
-        txt_email: String,
         emails: String,
 
         ) {
