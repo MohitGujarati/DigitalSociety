@@ -24,7 +24,7 @@ class Frag_profile_Complains(comp_email: String) : Fragment() {
     val BASE_URL = "https://mohitgapp.000webhostapp.com/"
 
 
-    var emails=comp_email
+    var emails = comp_email
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,16 +33,13 @@ class Frag_profile_Complains(comp_email: String) : Fragment() {
         // Inflate the layout for this fragment
 
 
-
         var view = inflater.inflate(R.layout.fragment_frag_profile__complains, container, false)
 
 
         var profile_complains = view.findViewById<RecyclerView>(R.id.profile_complain)
 
 
-
-
-        load_complains(profile_complains, view, "1",emails)
+        load_complains(profile_complains, view, "1", emails)
 
 
 
@@ -66,7 +63,6 @@ class Frag_profile_Complains(comp_email: String) : Fragment() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(Api_interface::class.java)
-
 
 
         var result = retrofit.user_complains("$emails")
@@ -102,7 +98,42 @@ class Frag_profile_Complains(comp_email: String) : Fragment() {
                             name: String,
                             flatno: String
                         ) {
-                            Toast.makeText(context, "Edit $id", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Editing $id", Toast.LENGTH_SHORT).show()
+
+                            var retrofit = Retrofit.Builder().baseUrl(BASE_URL)
+                                .addConverterFactory(GsonConverterFactory.create())
+                                .build()
+                                .create(Api_interface::class.java)
+
+                            var result = retrofit.user_updatecomplains(
+                                emails,
+                                complains,
+                                id
+                            )
+
+                            result.enqueue(object : Callback<List<Model_usercomplain>?> {
+                                override fun onResponse(
+                                    call: Call<List<Model_usercomplain>?>,
+                                    response: Response<List<Model_usercomplain>?>
+                                ) {
+
+
+                                    Log.d("complainsupdate", "${id} ${emails} ${complains}")
+
+
+                                }
+
+                                override fun onFailure(
+                                    call: Call<List<Model_usercomplain>?>,
+                                    t: Throwable
+                                ) {
+                                    Toast.makeText(context, "Cant update data", Toast.LENGTH_SHORT)
+                                        .show()
+                                }
+
+                            })
+
+
                         }
 
                         override fun onDeleteClicked(
@@ -160,5 +191,6 @@ class Frag_profile_Complains(comp_email: String) : Fragment() {
 
 
     }
+
 }
 

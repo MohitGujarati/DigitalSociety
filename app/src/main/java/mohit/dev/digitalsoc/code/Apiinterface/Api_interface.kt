@@ -50,6 +50,14 @@ interface Api_interface {
         @Query("email") email: String
     ): Call<List<Model_usercomplain>>
 
+    @FormUrlEncoded
+    @POST("user_complains_update.php")
+    fun user_updatecomplains(
+        @Field("email") email: String,
+        @Field("complains") complains: String,
+        @Field("id")id: Int
+    ): Call<List<Model_usercomplain>>
+
 
     @GET("get_notice.php")
     fun get_notice(): Call<List<Model_noticedb>>
