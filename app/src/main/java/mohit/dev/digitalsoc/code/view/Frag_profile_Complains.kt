@@ -1,10 +1,14 @@
 package mohit.dev.digitalsoc.code.view
 
+import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -98,6 +102,7 @@ class Frag_profile_Complains(comp_email: String) : Fragment() {
                             flatno: String
                         ) {
                             Toast.makeText(context, "Editing $id", Toast.LENGTH_SHORT).show()
+                            //calling to get current data of usercomplains
 
                             var retrofit = Retrofit.Builder().baseUrl(BASE_URL)
                                 .addConverterFactory(GsonConverterFactory.create())
@@ -116,6 +121,22 @@ class Frag_profile_Complains(comp_email: String) : Fragment() {
                                     response: Response<List<Model_usercomplain>?>
                                 ) {
 
+                                    var d = Dialog(view.context)
+                                    d.setContentView(R.layout.dialog_editfun)
+                                    d.setCancelable(true)
+                                    d.show()
+
+                                    var ed_complain = d.findViewById<EditText>(R.id.cname)
+                                    var btn_update = d.findViewById<Button>(R.id.cus_btn)
+                                    var pg_bar = d.findViewById<ProgressBar>(R.id.pgbar)
+
+                                    ed_complain.setText("$complains")
+
+                                    btn_update.setOnClickListener {
+                                        pg_bar.visibility=View.VISIBLE
+                                        btn_update.visibility=View.GONE
+
+                                    }
 
                                     Log.d("complainsupdate", "${id} ${emails} ${complains}")
 
