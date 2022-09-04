@@ -3,6 +3,7 @@ package mohit.dev.digitalsoc.code.Apiinterface
 import mohit.dev.digitalsoc.code.Model.Model_noticedb
 import mohit.dev.digitalsoc.code.Model.Model_usercomplain
 import mohit.dev.digitalsoc.code.Model.Model_userdb
+import mohit.dev.digitalsoc.code.Model.update_usercomplain
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -51,12 +52,11 @@ interface Api_interface {
     ): Call<List<Model_usercomplain>>
 
     @FormUrlEncoded
-    @POST("user_complains_update.php")
-    fun user_updatecomplains(
-        @Field("email") email: String,
+    @POST("user_complain_update.php")
+    fun user_complains_update(
         @Field("complains") complains: String,
-        @Field("id")id: Int
-    ): Call<List<Model_usercomplain>>
+        @Field("id") id: Int
+    ): Call<List<update_usercomplain>>
 
 
     @GET("get_notice.php")

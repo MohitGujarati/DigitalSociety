@@ -1,6 +1,7 @@
 package mohit.dev.digitalsoc.code.view
 
 import android.app.Dialog
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,6 +18,7 @@ import mohit.dev.digitalsoc.R
 import mohit.dev.digitalsoc.code.Adapter.Adapter_profileComplain
 import mohit.dev.digitalsoc.code.Apiinterface.Api_interface
 import mohit.dev.digitalsoc.code.Model.Model_usercomplain
+import mohit.dev.digitalsoc.code.Model.update_usercomplain
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,9 +28,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class Frag_profile_Complains(comp_email: String) : Fragment() {
     val BASE_URL = "https://mohitgapp.000webhostapp.com/"
-
-
     var emails = comp_email
+    lateinit var profile_complains:RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,8 +40,7 @@ class Frag_profile_Complains(comp_email: String) : Fragment() {
 
         var view = inflater.inflate(R.layout.fragment_frag_profile__complains, container, false)
 
-
-        var profile_complains = view.findViewById<RecyclerView>(R.id.profile_complain)
+        profile_complains = view.findViewById(R.id.profile_complain)
 
 
         load_complains(profile_complains, view, emails)
@@ -102,56 +102,70 @@ class Frag_profile_Complains(comp_email: String) : Fragment() {
                             flatno: String
                         ) {
                             Toast.makeText(context, "Editing $id", Toast.LENGTH_SHORT).show()
+
                             //calling to get current data of usercomplains
 
-                            var retrofit = Retrofit.Builder().baseUrl(BASE_URL)
-                                .addConverterFactory(GsonConverterFactory.create())
-                                .build()
-                                .create(Api_interface::class.java)
+                            var d = Dialog(view.context)
+                            d.setContentView(R.layout.dialog_editfun)
+                            d.setCancelable(true)
+                            d.getWindow()?.setBackgroundDrawable(ColorDrawable(0))
+                            d.show()
 
-                            var result = retrofit.user_updatecomplains(
-                                emails,
-                                complains,
-                                id
-                            )
+                            var cname = d.findViewById<EditText>(R.id.cname)
+                            var btn_update = d.findViewById<Button>(R.id.cus_btn)
+                            var pg_bar = d.findViewById<ProgressBar>(R.id.pgbar)
 
-                            result.enqueue(object : Callback<List<Model_usercomplain>?> {
-                                override fun onResponse(
-                                    call: Call<List<Model_usercomplain>?>,
-                                    response: Response<List<Model_usercomplain>?>
-                                ) {
+                            cname.setText("$complains")
 
-                                    var d = Dialog(view.context)
-                                    d.setContentView(R.layout.dialog_editfun)
-                                    d.setCancelable(true)
-                                    d.show()
+                            btn_update.setOnClickListener {
+                                pg_bar.visibility = View.VISIBLE
+                                btn_update.visibility = View.GONE
 
-                                    var ed_complain = d.findViewById<EditText>(R.id.cname)
-                                    var btn_update = d.findViewById<Button>(R.id.cus_btn)
-                                    var pg_bar = d.findViewById<ProgressBar>(R.id.pgbar)
+                                var retrofit = Retrofit.Builder().baseUrl(BASE_URL)
+                                    .addConverterFactory(GsonConverterFactory.create())
+                                    .build()
+                                    .create(Api_interface::class.java)
 
-                                    ed_complain.setText("$complains")
+                                var result = retrofit.user_complains_update(
+                                   "${cname.text.toString()}",
+                                    id,
+                                )
 
-                                    btn_update.setOnClickListener {
-                                        pg_bar.visibility=View.VISIBLE
-                                        btn_update.visibility=View.GONE
-
+                                result.enqueue(object : Callback<List<update_usercomplain>?>{
+                                    override fun onResponse(
+                                        call: Call<List<update_usercomplain>?>,
+                                        response: Response<List<update_usercomplain>?>
+                                    ) {
+                                        Log.d(
+                                            "complainsupdate",
+                                            "${id} ${emails} ${cname.text.toString()}," +
+                                                    "response:- ${response.toString()}"
+                                        )
+                                        Toast.makeText(view.context, "complain updated", Toast.LENGTH_SHORT).show()
+                                        pg_bar.visibility = View.GONE
+                                        load_complains(recComplain, view, emails)
+                                        d.dismiss()
                                     }
+                                    override fun onFailure(
+                                        call: Call<List<update_usercomplain>?>,
+                                        t: Throwable
+                                    ) {
+                                        Toast.makeText(view.context, "Updated", Toast.LENGTH_SHORT).show()
+                                        pg_bar.visibility = View.GONE
+                                        load_complains(recComplain, view, emails)
+                                        d.dismiss()
+                                    }
+                                })
 
-                                    Log.d("complainsupdate", "${id} ${emails} ${complains}")
 
 
-                                }
 
-                                override fun onFailure(
-                                    call: Call<List<Model_usercomplain>?>,
-                                    t: Throwable
-                                ) {
-                                    Toast.makeText(context, "Cant update data", Toast.LENGTH_SHORT)
-                                        .show()
-                                }
 
-                            })
+                            }
+
+                            Log.d("complainsupdate", "${id} ${emails} ${complains}")
+
+
 
 
                         }
