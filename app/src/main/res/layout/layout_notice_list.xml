@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
     android:layout_marginLeft="4dp"
     android:layout_marginRight="4dp"
     android:layout_marginTop="5dp"
-    android:layout_marginBottom="5dp"
     android:background="@drawable/background_viewlayouts"
     android:orientation="vertical">
+
+
 
 
     <TextView
@@ -17,7 +17,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Title"
-        android:layout_margin="10dp"
         android:background="@drawable/background_viewlayouts"
         android:layout_marginBottom="10dp"
         android:textAlignment="center"

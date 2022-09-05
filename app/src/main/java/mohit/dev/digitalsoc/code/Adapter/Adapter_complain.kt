@@ -37,7 +37,7 @@ class Adapter_complain(
 
 
         holder.iv_speaker.setOnClickListener {
-            speakerclicked.onSpeakerClicked(position,mymodel.complains)
+            speakerclicked.onSpeakerClicked(position, mymodel.complains)
         }
 
     }
