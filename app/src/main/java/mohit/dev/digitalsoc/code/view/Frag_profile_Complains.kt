@@ -37,7 +37,6 @@ class Frag_profile_Complains(comp_email: String) : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-
         var view = inflater.inflate(R.layout.fragment_frag_profile__complains, container, false)
 
         profile_complains = view.findViewById(R.id.profile_complain)
