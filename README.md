@@ -11,3 +11,4 @@ About Digital society
 
 •	Integrated Retrofit dependency simplifies the development process,improves performance, and reduces latency. Implemented material design to achieve good design and a reliable user interface.
 
+Project is  almost completed 
