@@ -198,13 +198,16 @@ class Frag_profile_Complains(comp_email: String) : Fragment() {
                                         "Data at $id deleted successfully",
                                         Toast.LENGTH_SHORT
                                     ).show()
+                                    load_complains(recComplain, view, emails)
                                 }
 
                                 override fun onFailure(
                                     call: Call<List<Model_usercomplain>?>,
                                     t: Throwable
                                 ) {
-                                    Toast.makeText(context, "$t", Toast.LENGTH_SHORT).show()
+
+                                    load_complains(recComplain, view, emails)
+
                                 }
 
                             })
@@ -218,6 +221,8 @@ class Frag_profile_Complains(comp_email: String) : Fragment() {
 
             override fun onFailure(call: Call<List<Model_usercomplain>?>, t: Throwable) {
                 Log.d("error", "BaseActivity-75 $t")
+                load_complains(recComplain, view, emails)
+
             }
 
         })

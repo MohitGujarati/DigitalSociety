@@ -55,10 +55,6 @@ class Frag_Profile_card : Fragment() {
 
         Log.d("recived_data_Profilecard","${username} email:${email} position:${position}, flatno:${flatno}")
 
-
-
-
-
         loadtabs(mytablayout,email.toString())
 
 
@@ -103,14 +99,7 @@ class Frag_Profile_card : Fragment() {
         var fragmentList: ArrayList<Fragment> = ArrayList()
         var fragmentTitleList: ArrayList<String> = ArrayList()
 
-
-
-
-
         constructor(supportFragmentManager: FragmentManager) : super(supportFragmentManager)
-
-
-
 
         override fun getCount(): Int {
             return fragmentList.size
