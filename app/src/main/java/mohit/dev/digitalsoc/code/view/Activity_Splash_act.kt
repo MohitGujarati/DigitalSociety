@@ -25,9 +25,8 @@ class Activity_Splash_act : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        var loginlayout=findViewById<RelativeLayout>(R.id.loginlayout)
-        var splash_screen=findViewById<RelativeLayout>(R.id.splash_screen)
-
+        var loginlayout = findViewById<RelativeLayout>(R.id.loginlayout)
+        var splash_screen = findViewById<RelativeLayout>(R.id.splash_screen)
 
 
         var btnlogin = findViewById<MaterialButton>(R.id.btn_login)
@@ -37,15 +36,14 @@ class Activity_Splash_act : AppCompatActivity() {
         var user_name: String = ""
         var user_flatno: String = ""
         var user_position: String = ""
-        var pass_email:String=""
+        var pass_email: String = ""
 
 
-
-
+//splash screen
         Handler(Looper.getMainLooper()).postDelayed({
-            loginlayout.visibility= View.VISIBLE
-            splash_screen.visibility= View.GONE
-        },3000)
+            loginlayout.visibility = View.VISIBLE
+            splash_screen.visibility = View.GONE
+        }, 3000)
 
 
         btnlogin.setOnClickListener {
@@ -72,7 +70,7 @@ class Activity_Splash_act : AppCompatActivity() {
                             "mydata",
                             "welcome ${data.name} ${data.email}  ${data.password} ${data.flatno} ${data.position}"
                         )
-                      //  Toast.makeText(applicationContext, "Successful login", Toast.LENGTH_SHORT).show()
+                        //  Toast.makeText(applicationContext, "Successful login", Toast.LENGTH_SHORT).show()
 
 
                         loginlayout.visibility = View.GONE
@@ -80,16 +78,16 @@ class Activity_Splash_act : AppCompatActivity() {
                         user_name = "${data.name}"
                         user_flatno = "${data.flatno}"
                         user_position = "${data.position}"
-                        pass_email="${data.email}"
+                        pass_email = "${data.email}"
 
-                      //  Toast.makeText(this@Activity_Splash_act, "email :- ${data.email}, emaildata :- ${data.email}", Toast.LENGTH_SHORT).show()
+                        //  Toast.makeText(this@Activity_Splash_act, "email :- ${data.email}, emaildata :- ${data.email}", Toast.LENGTH_SHORT).show()
 
-                        val i=Intent(this@Activity_Splash_act,Activity_MainActivity::class.java)
+                        val i = Intent(this@Activity_Splash_act, Activity_MainActivity::class.java)
                         //Toast.makeText(this@Activity_Splash_act, "From splash screen", Toast.LENGTH_SHORT).show()
-                        i.putExtra("splash_username","$user_name")
-                        i.putExtra("splash_flatno","$user_flatno")
-                        i.putExtra("splash_position","$user_position")
-                        i.putExtra("splash_email","${pass_email}")
+                        i.putExtra("splash_username", "$user_name")
+                        i.putExtra("splash_flatno", "$user_flatno")
+                        i.putExtra("splash_position", "$user_position")
+                        i.putExtra("splash_email", "${pass_email}")
                         startActivity(i)
                     }
                 }
@@ -101,8 +99,6 @@ class Activity_Splash_act : AppCompatActivity() {
             })
 
         }
-
-
 
 
     }

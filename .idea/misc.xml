@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/All android 2022-2023/Digitalsoc/app/src/main/res/drawable-v24/background_complain.xml" value="0.16" />
+        <entry key="..\:/All android 2022-2023/Digitalsoc/app/src/main/res/drawable-v24/background_notice.xml" value="0.16" />
         <entry key="..\:/All android 2022-2023/Digitalsoc/app/src/main/res/drawable/background_Text_layout.xml" value="0.132" />
         <entry key="..\:/All android 2022-2023/Digitalsoc/app/src/main/res/drawable/background_profile.xml" value="0.1345" />
         <entry key="..\:/All android 2022-2023/Digitalsoc/app/src/main/res/drawable/background_rounded_corner.xml" value="0.1345" />
@@ -23,8 +25,8 @@
         <entry key="..\:/All android 2022-2023/Digitalsoc/app/src/main/res/layout/fragment_frag__profile_card.xml" value="0.3129251700680272" />
         <entry key="..\:/All android 2022-2023/Digitalsoc/app/src/main/res/layout/fragment_frag_profile__complains.xml" value="0.27447916666666666" />
         <entry key="..\:/All android 2022-2023/Digitalsoc/app/src/main/res/layout/fragment_frag_profile__notice.xml" value="0.27447916666666666" />
-        <entry key="..\:/All android 2022-2023/Digitalsoc/app/src/main/res/layout/layout_complain_list.xml" value="0.536" />
-        <entry key="..\:/All android 2022-2023/Digitalsoc/app/src/main/res/layout/layout_notice_list.xml" value="0.536" />
+        <entry key="..\:/All android 2022-2023/Digitalsoc/app/src/main/res/layout/layout_complain_list.xml" value="0.264" />
+        <entry key="..\:/All android 2022-2023/Digitalsoc/app/src/main/res/layout/layout_notice_list.xml" value="0.3265792610250298" />
         <entry key="..\:/All android 2022-2023/Digitalsoc/app/src/main/res/layout/layout_profile_complainlist.xml" value="0.27447916666666666" />
         <entry key="..\:/All android 2022-2023/Digitalsoc/app/src/main/res/layout/reclayout_Home.xml" value="0.27447916666666666" />
         <entry key="..\:/All android 2022-2023/Digitalsoc/app/src/main/res/layout/reclayout_home.xml" value="0.6" />
@@ -33,7 +35,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Embedded JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

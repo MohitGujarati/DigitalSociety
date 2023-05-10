@@ -32,18 +32,22 @@ class Frag_Add_complain : Fragment() {
         val ed_complains = view.findViewById<EditText>(R.id.ed_complains)
 
 
+        //getting user data
         val bundle = arguments
         val username = bundle!!.getString("compuser")
         val flatno = bundle!!.getString("compflatno")
         val position = bundle!!.getString("compposition")
         val email = bundle!!.getString("compemail")
 
+        //checking data recived
         Log.d("recived_data_addfragment","${username} email:${email} position:$position, flatno:${flatno}")
 
+        //taking flat user data
         tv_flatno.text=flatno.toString()
         tv_name.text=username.toString()
 
 
+        //adding complain to online database using retrofit
 
         btn_sendComplain.setOnClickListener {
             var retrofit = Retrofit.Builder().baseUrl("https://mohitgapp.000webhostapp.com/")
@@ -76,10 +80,6 @@ class Frag_Add_complain : Fragment() {
                         "Data Inserted successfully",
                         Toast.LENGTH_SHORT
                     ).show()
-
-
-
-
                 }
 
                 override fun onFailure(call: Call<List<Model_usercomplain>?>, t: Throwable) {

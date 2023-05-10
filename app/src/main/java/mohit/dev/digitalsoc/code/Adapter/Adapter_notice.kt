@@ -4,14 +4,16 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButton
 import mohit.dev.digitalsoc.R
 import mohit.dev.digitalsoc.code.Model.Model_noticedb
 
 
-class Adapter_notice(
+open class Adapter_notice(
     var context: Context,
     var complainlist: ArrayList<Model_noticedb>,
     var speakerclicked: SpeakerClicked
@@ -51,7 +53,7 @@ class Adapter_notice(
         var notice_title = item.findViewById<TextView>(R.id.notice_title)
         var notice_date = item.findViewById<TextView>(R.id.notice_date)
         var notice = item.findViewById<TextView>(R.id.notice_notice)
-        var notice_speaker = item.findViewById<ImageView>(R.id.notice_speaker)
+        var notice_speaker = item.findViewById<Button>(R.id.notice_speaker)
 
     }
 }

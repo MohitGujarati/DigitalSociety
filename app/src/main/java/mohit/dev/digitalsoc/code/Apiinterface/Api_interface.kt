@@ -19,14 +19,13 @@ interface Api_interface {
         @Field("position") position: String
     ): Call<List<Model_userdb>>
 
-
     @GET("user_login.php")
     fun login(
         @Query("email") email: String,
         @Query("password") password: String
     ): Call<List<Model_userdb>>
 
-
+//get all data
     @GET("subject.php")
     fun subject(): Call<List<Model_usercomplain>>
 
@@ -40,17 +39,20 @@ interface Api_interface {
     ): Call<List<Model_usercomplain>>
 
 
+    //delete complain acc to his his complain id
     @FormUrlEncoded
     @POST("delete_complain.php")
     fun delete_complain(
         @Field("id") id: Int
     ): Call<List<Model_usercomplain>>
 
+    //get user_profile  complains useing his email as validation
     @GET("user_complains.php")
     fun user_complains(
         @Query("email") email: String
     ): Call<List<Model_usercomplain>>
 
+    //update data
     @FormUrlEncoded
     @POST("user_complain_update.php")
     fun user_complains_update(

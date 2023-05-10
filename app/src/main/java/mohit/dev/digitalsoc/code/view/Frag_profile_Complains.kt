@@ -81,7 +81,6 @@ class Frag_profile_Complains(comp_email: String) : Fragment() {
                 Log.d("recview", "$response")
 
 
-
                 usercomplaindataitem =
                     response.body() as ArrayList<Model_usercomplain> /* = java.util.ArrayList<mohit.dev.digitalsoc.code.Model.model_complains> */
 

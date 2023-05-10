@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="5dp"
-    android:layout_marginRight="5dp"
-    android:layout_marginBottom="10dp"
+    android:layout_margin="5dp"
+
     android:elevation="20dp"
     android:orientation="vertical">
 
 
     <!--Dp/Name/flatno-->
     <LinearLayout
+        android:background="@drawable/background_complain"
+        android:backgroundTint="#3949AB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -21,10 +22,7 @@
             android:id="@+id/profile_pic"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="-2dp"
+            android:layout_margin="10dp"
             android:background="@drawable/background_viewlayouts"
             android:backgroundTint="#039BE5"
             app:cardCornerRadius="20dp">
@@ -73,7 +71,8 @@
 
     <!--vote/speaker/complain-->
     <LinearLayout
-
+        android:background="@drawable/background_complain"
+        android:backgroundTint="#377C7B7B"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/layl"
@@ -94,7 +93,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginBottom="10dp"
-
                 android:src="@drawable/ic_arrow_up" />
 
             <TextView
@@ -130,6 +128,7 @@
         <ScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:layout_weight="2">
 
             <TextView
@@ -139,8 +138,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="250dp"
                 android:maxHeight="200dp"
+                android:layout_marginTop="13dp"
                 android:padding="10dp"
-                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." />
+                android:text="@string/Demo"/>
+
 
         </ScrollView>
 
